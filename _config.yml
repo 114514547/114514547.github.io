@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "中国-郑州"
-site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "个人主页" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "玻璃联邦的主页"
 title_separator          : "-"
 name                     : &name "glass union"
@@ -16,7 +16,7 @@ description              : &description "万里归船弄长笛，此心吾与白
 url                      : https://114514547.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+repository               : "114514547/114514547.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
