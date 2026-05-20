@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "中国-郑州"
-site_theme               : "个人主页" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "玻璃联邦的主页"
 title_separator          : "-"
 name                     : &name "glass union"
@@ -81,6 +81,7 @@ author:
   xing             : # Username
   youtube          : # Username
   zhihu            : # Username
+  bilibili         : # B站用户ID (数字)
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
