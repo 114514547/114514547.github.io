@@ -1,5 +1,5 @@
 ---
-title: "GitHub Pages 个人主页"
+title: "GitHub Pages 个人主页简明教程——(1)"
 excerpt: "本文介绍了Github Pages个人主页的文件夹构成<br/><img src='/images/project cover.png'>"
 collection: portfolio
 

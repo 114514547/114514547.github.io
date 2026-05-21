@@ -4,8 +4,8 @@
 
 /* --- CSS Variables --- */
 :root {
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-bg-strong: rgba(255, 255, 255, 0.72);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-strong: rgba(255, 255, 255, 0.88);
   --glass-border: rgba(255, 255, 255, 0.45);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   --glass-blur: 18px;
@@ -27,8 +27,8 @@
 }
 
 html[data-theme="dark"] {
-  --glass-bg: rgba(30, 30, 36, 0.65);
-  --glass-bg-strong: rgba(30, 30, 36, 0.78);
+  --glass-bg: rgba(30, 30, 36, 0.82);
+  --glass-bg-strong: rgba(30, 30, 36, 0.92);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   --accent: #818cf8;
