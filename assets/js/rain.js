@@ -9,7 +9,7 @@
     var canvas = document.createElement("canvas");
     canvas.id = "rain-canvas";
     canvas.style.cssText =
-      "position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.35;";
+      "position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:0.6;";
 
     // Insert before first child of body
     if (document.body.firstChild) {
@@ -42,7 +42,7 @@
         y: randomY ? Math.random() * h : -(Math.random() * h * 0.6),
         length: 8 + Math.random() * 18,
         speed: 6 + Math.random() * 14,
-        opacity: 0.06 + Math.random() * 0.12,
+        opacity: 0.1 + Math.random() * 0.18,
         wind: 0.3 + Math.random() * 0.7,
       };
     }
