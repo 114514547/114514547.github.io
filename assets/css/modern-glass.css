@@ -41,6 +41,8 @@ html[data-theme="dark"] {
 
 /* --- Body & Background --- */
 body {
+  position: relative;
+  z-index: 0;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -690,7 +692,7 @@ html[data-theme="dark"] .author__urls a:hover {
 }
 
 .splash .page__content,
-.single .page {
+article.page {
   background: var(--glass-bg);
   -webkit-backdrop-filter: blur(var(--glass-blur));
   backdrop-filter: blur(var(--glass-blur));
@@ -702,11 +704,11 @@ html[data-theme="dark"] .author__urls a:hover {
               box-shadow var(--transition-base);
 }
 
-.single .page:hover {
+article.page:hover {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
-html[data-theme="dark"] .single .page:hover {
+html[data-theme="dark"] article.page:hover {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
@@ -1052,7 +1054,7 @@ html[data-theme="dark"] blockquote {
 @media (max-width: 1024px) {
   .sidebar > div { padding: 1.2em 1em; }
   .splash .page__content,
-  .single .page { padding: 1.5em 1.2em; }
+  article.page { padding: 1.5em 1.2em; }
   .home-section { padding: 0 1rem; }
   .glass-card { padding: 1.5rem 1.3rem; }
 }
@@ -1062,7 +1064,7 @@ html[data-theme="dark"] blockquote {
 
   .sidebar > div,
   .splash .page__content,
-  .single .page,
+  article.page,
   .archive__item {
     border-radius: var(--radius-md);
   }

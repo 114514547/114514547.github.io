@@ -9,7 +9,7 @@
     var canvas = document.createElement("canvas");
     canvas.id = "rain-canvas";
     canvas.style.cssText =
-      "position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.85;";
+      "position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:0.85;";
 
     // Insert before first child of body
     if (document.body.firstChild) {
