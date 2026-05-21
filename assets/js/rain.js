@@ -9,7 +9,7 @@
     var canvas = document.createElement("canvas");
     canvas.id = "rain-canvas";
     canvas.style.cssText =
-      "position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:0.6;";
+      "position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.85;";
 
     // Insert before first child of body
     if (document.body.firstChild) {
@@ -21,7 +21,7 @@
     var ctx = canvas.getContext("2d");
     var w, h;
     var drops = [];
-    var dropCount = 180;
+    var dropCount = 220;
 
     function resize() {
       w = canvas.width = window.innerWidth;
@@ -42,7 +42,7 @@
         y: randomY ? Math.random() * h : -(Math.random() * h * 0.6),
         length: 8 + Math.random() * 18,
         speed: 6 + Math.random() * 14,
-        opacity: 0.1 + Math.random() * 0.18,
+        opacity: 0.12 + Math.random() * 0.22,
         wind: 0.3 + Math.random() * 0.7,
       };
     }
@@ -59,7 +59,7 @@
         ctx.moveTo(d.x, d.y);
         ctx.lineTo(x2, y2);
         ctx.strokeStyle = "rgba(180,200,220," + d.opacity + ")";
-        ctx.lineWidth = 0.6 + Math.random() * 0.3;
+        ctx.lineWidth = 0.8 + Math.random() * 0.5;
         ctx.lineCap = "round";
         ctx.stroke();
 
