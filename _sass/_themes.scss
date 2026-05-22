@@ -6,6 +6,22 @@
    TYPOGRAPHY
    ========================================================================== */
 
+@font-face {
+  font-family: "FZRuiHei";
+  src: url("../fonts/FZRuiZHJW.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-Medium-3.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Used to set the size for <em> */
 $doc-font-size              : 16;
 
@@ -15,8 +31,8 @@ $indent-var                 : 1.3em;
 
 /* System typefaces */
 $serif                      : Georgia, Times, serif;
-$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$monospace                  : Monaco, Consolas, "Lucida Console", monospace;
+$sans-serif                 : "FZRuiHei", -apple-system, "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+$monospace                  : "JetBrains Mono", Monaco, Consolas, "Lucida Console", monospace;
 
 /* Sans serif typefaces */
 $sans-serif-narrow          : $sans-serif;
