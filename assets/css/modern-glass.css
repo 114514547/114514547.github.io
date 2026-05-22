@@ -55,9 +55,9 @@ body::before {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.06) 0%,
-    rgba(0, 0, 0, 0.05) 50%,
-    rgba(0, 0, 0, 0.06) 100%
+    rgba(9, 169, 255, 0.06) 0%,
+    rgba(25, 23, 23, 0.05) 50%,
+    rgba(255, 255, 255, 0.06) 100%
   );
   pointer-events: none;
   z-index: 1;
@@ -691,7 +691,6 @@ html[data-theme="dark"] .author__urls a:hover {
   animation-delay: 0.3s;
 }
 
-.splash .page__content,
 article.page {
   background: var(--glass-bg);
   -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -1053,7 +1052,6 @@ html[data-theme="dark"] blockquote {
 
 @media (max-width: 1024px) {
   .sidebar > div { padding: 1.2em 1em; }
-  .splash .page__content,
   article.page { padding: 1.5em 1.2em; }
   .home-section { padding: 0 1rem; }
   .glass-card { padding: 1.5rem 1.3rem; }
@@ -1063,7 +1061,6 @@ html[data-theme="dark"] blockquote {
   :root { --glass-blur: 12px; }
 
   .sidebar > div,
-  .splash .page__content,
   article.page,
   .archive__item {
     border-radius: var(--radius-md);
