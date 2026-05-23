@@ -123,9 +123,9 @@ location: "City, Country"
 `_pages/cv.md`（简历页）里有一段 Liquid 代码会自动遍历所有教学经历：
 
 ```liquid
-<ul>{% for post in site.teaching reversed %}
+{% raw %}<ul>{% for post in site.teaching reversed %}
   {% include archive-single-cv.html %}
-{% endfor %}</ul>
+{% endfor %}</ul>{% endraw %}
 ```
 
 所以你只需要往 `_teaching/` 里加文件，简历页就会自动更新。论文和演讲也是一样的机制。
