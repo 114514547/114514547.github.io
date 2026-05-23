@@ -972,3 +972,295 @@ html[data-style="metro"] #style-toggle a:hover {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* ==========================================================================
+   ARCHIVE / LISTING PAGES — Metro Tile Grid
+   ========================================================================== */
+
+/* Hide sidebar on archive pages */
+html[data-style="metro"] .archive ~ .sidebar,
+html[data-style="metro"] #main > .sidebar {
+  display: none !important;
+}
+
+html[data-style="metro"] #main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+html[data-style="metro"] .archive {
+  animation: none;
+}
+
+/* Page title — Metro style */
+html[data-style="metro"] .page__title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--metro-text);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.2rem;
+}
+
+html[data-style="metro"] .page__title::after {
+  display: none;
+}
+
+/* Year headers */
+html[data-style="metro"] .archive__subtitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--metro-text-muted);
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--metro-secondary);
+  display: inline-block;
+}
+
+/* Archive items → Metro tile grid */
+html[data-style="metro"] .list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--metro-gap);
+}
+
+html[data-style="metro"] .list__item {
+  margin-bottom: 0;
+}
+
+/* Each archive item becomes a Metro tile */
+html[data-style="metro"] .archive__item {
+  background: var(--metro-surface);
+  border: 1px solid var(--metro-border);
+  padding: 1rem 1.1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--metro-duration) var(--metro-easing),
+              border-color var(--metro-duration) var(--metro-easing),
+              background var(--metro-duration) var(--metro-easing);
+  animation: metroTileIn 400ms var(--metro-easing) both;
+}
+
+html[data-style="metro"] .archive__item:hover {
+  transform: translateY(-2px);
+  border-color: var(--metro-accent);
+  box-shadow: none;
+}
+
+html[data-style="metro"] .archive__item:active {
+  transform: scale(0.98);
+}
+
+/* Stagger animation for archive items */
+html[data-style="metro"] .list__item:nth-child(1) .archive__item { animation-delay: 0ms; }
+html[data-style="metro"] .list__item:nth-child(2) .archive__item { animation-delay: 50ms; }
+html[data-style="metro"] .list__item:nth-child(3) .archive__item { animation-delay: 100ms; }
+html[data-style="metro"] .list__item:nth-child(4) .archive__item { animation-delay: 150ms; }
+html[data-style="metro"] .list__item:nth-child(5) .archive__item { animation-delay: 200ms; }
+html[data-style="metro"] .list__item:nth-child(6) .archive__item { animation-delay: 250ms; }
+html[data-style="metro"] .list__item:nth-child(7) .archive__item { animation-delay: 300ms; }
+html[data-style="metro"] .list__item:nth-child(8) .archive__item { animation-delay: 350ms; }
+html[data-style="metro"] .list__item:nth-child(9) .archive__item { animation-delay: 400ms; }
+html[data-style="metro"] .list__item:nth-child(10) .archive__item { animation-delay: 450ms; }
+
+/* Title */
+html[data-style="metro"] .archive__item-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+html[data-style="metro"] .archive__item-title a {
+  color: var(--metro-text);
+  text-decoration: none;
+}
+
+html[data-style="metro"] .archive__item-title a::after {
+  display: none;
+}
+
+html[data-style="metro"] .archive__item-title a:hover {
+  color: var(--metro-secondary);
+}
+
+/* Date */
+html[data-style="metro"] .page__date {
+  font-size: 0.72rem;
+  color: var(--metro-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+html[data-style="metro"] .page__date i {
+  display: none;
+}
+
+/* Excerpt */
+html[data-style="metro"] .archive__item-excerpt {
+  font-size: 0.78rem;
+  color: var(--metro-text-muted);
+  line-height: 1.5;
+  margin-top: 0.3rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+html[data-style="metro"] .archive__item-excerpt a {
+  color: var(--metro-secondary);
+}
+
+/* Read time */
+html[data-style="metro"] .page__meta {
+  font-size: 0.7rem;
+  color: var(--metro-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+/* Teaching/Publications specific metadata */
+html[data-style="metro"] .archive__item p {
+  font-size: 0.78rem;
+  color: var(--metro-text-muted);
+  margin-bottom: 0.2rem;
+}
+
+html[data-style="metro"] .archive__item p i {
+  color: var(--metro-text-secondary);
+}
+
+/* Citation block */
+html[data-style="metro"] .archive__item p[style*="font-size: smaller"] {
+  font-size: 0.7rem !important;
+  color: var(--metro-text-muted);
+  padding: 0.5rem;
+  background: var(--metro-bg-secondary);
+  margin-top: 0.5rem;
+}
+
+html[data-style="metro"] .archive__item p[style*="font-size: smaller"] a {
+  color: var(--metro-secondary);
+}
+
+/* Image teaser in grid mode */
+html[data-style="metro"] .archive__item-teaser {
+  margin: -1rem -1.1rem 0.8rem;
+}
+
+html[data-style="metro"] .archive__item-teaser img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Tag/category archive pages */
+html[data-style="metro"] .archive__item-title .taxonomy__count {
+  font-size: 0.7rem;
+  color: var(--metro-text-muted);
+  font-weight: 400;
+  margin-left: 0.3rem;
+}
+
+
+/* ==========================================================================
+   SINGLE ARTICLE PAGE — Metro Style
+   ========================================================================== */
+
+html[data-style="metro"] article.page {
+  background: var(--metro-surface);
+  border: 1px solid var(--metro-border);
+  padding: 1.5rem 1.8rem;
+  max-width: 800px;
+  margin: 1.5rem auto;
+}
+
+html[data-style="metro"] article.page .page__title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--metro-text);
+}
+
+html[data-style="metro"] article.page .page__title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--metro-secondary);
+  margin-top: 8px;
+}
+
+/* Article content typography */
+html[data-style="metro"] .page__content {
+  color: var(--metro-text);
+  line-height: 1.75;
+}
+
+html[data-style="metro"] .page__content h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--metro-text);
+  border-bottom: 2px solid var(--metro-secondary);
+  padding-bottom: 0.3rem;
+  margin-top: 1.5rem;
+}
+
+html[data-style="metro"] .page__content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--metro-text);
+}
+
+html[data-style="metro"] .page__content a:not(.btn) {
+  color: var(--metro-secondary);
+}
+
+html[data-style="metro"] .page__content a:not(.btn)::after {
+  background: var(--metro-secondary);
+}
+
+/* Blockquote */
+html[data-style="metro"] blockquote {
+  border-left: 3px solid var(--metro-primary) !important;
+  background: var(--metro-bg-secondary) !important;
+  color: var(--metro-text);
+}
+
+/* Code */
+html[data-style="metro"] .page__content code {
+  background: var(--metro-bg-secondary);
+  padding: 0.1em 0.3em;
+  font-size: 0.88em;
+}
+
+html[data-style="metro"] .highlight,
+html[data-style="metro"] pre {
+  background: var(--metro-bg-secondary) !important;
+  border: 1px solid var(--metro-border) !important;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE — Archive Grid
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  html[data-style="metro"] .list {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-style="metro"] #main {
+    padding: 1rem;
+  }
+
+  html[data-style="metro"] article.page {
+    padding: 1.2rem;
+    margin: 1rem auto;
+  }
+}
