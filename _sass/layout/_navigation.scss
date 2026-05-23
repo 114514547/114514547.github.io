@@ -175,7 +175,7 @@
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: var(--global-bg-color);
+  background: transparent;
 
   a {
     display: block;
@@ -196,7 +196,7 @@
     padding: 0 0.5rem;
     border: 0;
     outline: none;
-    background-color: var(--global-bg-color);
+    background-color: transparent;
     color: var(--global-text-color);
     cursor: pointer;
     z-index: 100;
@@ -268,7 +268,9 @@
     padding: 5px;
     border: 1px solid var(--global-border-color);
     border-radius: $border-radius;
-    background: var(--global-bg-color);
+    background: var(--glass-bg, rgba(255, 255, 255, 0.88));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
     box-shadow: 0 0 10px rgba(#000, 0.25);
 
     a {
