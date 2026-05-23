@@ -1,24 +1,20 @@
-// Style toggle: glass -> material -> metro -> glass
+// Style toggle: glass <-> metro
 (function () {
-  var styles = ["glass", "material", "metro"];
   var icons = {
     glass: "fa-palette",
-    material: "fa-layer-group",
     metro: "fa-table-cells-large"
   };
 
   function getStyle() {
-    var s = localStorage.getItem("style");
-    return styles.indexOf(s) !== -1 ? s : "glass";
+    return localStorage.getItem("style") === "metro" ? "metro" : "glass";
   }
 
   function setStyle(style) {
-    if (style === "glass") {
-      document.documentElement.removeAttribute("data-style");
+    if (style === "metro") {
+      document.documentElement.setAttribute("data-style", "metro");
     } else {
-      document.documentElement.setAttribute("data-style", style);
+      document.documentElement.removeAttribute("data-style");
     }
-    // Update icon
     var icon = document.getElementById("style-icon");
     if (icon) {
       icon.className = "fa-solid " + (icons[style] || icons.glass);
@@ -36,11 +32,8 @@
     setStyle(getStyle());
 
     btn.addEventListener("click", function () {
-      var current = getStyle();
-      var idx = styles.indexOf(current);
-      var next = styles[(idx + 1) % styles.length];
+      var next = getStyle() === "metro" ? "glass" : "metro";
 
-      // Smooth transition overlay
       var overlay = document.createElement("div");
       overlay.className = "md-theme-transition";
       document.body.appendChild(overlay);

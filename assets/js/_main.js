@@ -22,26 +22,26 @@ let determineComputedTheme = () => {
 // detect OS/browser preference
 const browserPref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-// --- Style (glass / material) ---
+// --- Style (glass / metro) ---
 let determineStyleSetting = () => {
   let s = localStorage.getItem("style");
-  return (s === "material") ? "material" : "glass";
+  return (s === "metro") ? "metro" : "glass";
 };
 
 let setStyle = (style) => {
   const use_style = style || determineStyleSetting();
-  if (use_style === "material") {
-    $("html").attr("data-style", "material");
-    $("#style-icon").removeClass("fa-palette").addClass("fa-layer-group");
+  if (use_style === "metro") {
+    $("html").attr("data-style", "metro");
+    $("#style-icon").removeClass("fa-palette").addClass("fa-table-cells-large");
   } else {
     $("html").removeAttr("data-style");
-    $("#style-icon").removeClass("fa-layer-group").addClass("fa-palette");
+    $("#style-icon").removeClass("fa-table-cells-large").addClass("fa-palette");
   }
 };
 
 var toggleStyle = () => {
   const current = $("html").attr("data-style");
-  const next = current === "material" ? "glass" : "material";
+  const next = current === "metro" ? "glass" : "metro";
 
   const overlay = document.createElement('div');
   overlay.className = 'md-theme-transition';
