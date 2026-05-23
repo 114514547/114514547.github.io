@@ -1,30 +1,44 @@
-// Style toggle: glass <-> material
+// Style toggle: glass -> material -> metro -> glass
 (function () {
+  var styles = ["glass", "material", "metro"];
+  var icons = {
+    glass: "fa-palette",
+    material: "fa-layer-group",
+    metro: "fa-table-cells-large"
+  };
+
   function getStyle() {
-    return localStorage.getItem("style") === "material" ? "material" : "glass";
+    var s = localStorage.getItem("style");
+    return styles.indexOf(s) !== -1 ? s : "glass";
   }
 
   function setStyle(style) {
-    if (style === "material") {
-      document.documentElement.setAttribute("data-style", "material");
-      var icon = document.getElementById("style-icon");
-      if (icon) { icon.classList.remove("fa-palette"); icon.classList.add("fa-layer-group"); }
-    } else {
+    if (style === "glass") {
       document.documentElement.removeAttribute("data-style");
-      var icon = document.getElementById("style-icon");
-      if (icon) { icon.classList.remove("fa-layer-group"); icon.classList.add("fa-palette"); }
+    } else {
+      document.documentElement.setAttribute("data-style", style);
+    }
+    // Update icon
+    var icon = document.getElementById("style-icon");
+    if (icon) {
+      icon.className = "fa-solid " + (icons[style] || icons.glass);
     }
   }
 
-  // Apply saved style on load
+  // Apply saved style immediately (before render)
   setStyle(getStyle());
 
-  // Toggle on click
-  var btn = document.getElementById("style-toggle");
-  if (btn) {
+  // Bind click after DOM is ready
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("style-toggle");
+    if (!btn) return;
+
+    setStyle(getStyle());
+
     btn.addEventListener("click", function () {
-      var current = document.documentElement.getAttribute("data-style");
-      var next = current === "material" ? "glass" : "material";
+      var current = getStyle();
+      var idx = styles.indexOf(current);
+      var next = styles[(idx + 1) % styles.length];
 
       // Smooth transition overlay
       var overlay = document.createElement("div");
@@ -42,5 +56,5 @@
         }, 250);
       });
     });
-  }
+  });
 })();

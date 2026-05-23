@@ -1,0 +1,974 @@
+/* ==========================================================================
+   METRO THEME — Windows Metro / Fluent Dashboard
+   Color Palette: #02132E #3C6DA6 #9DBFE2 #B8DDF7 #BFE6FD
+   Activated by: <html data-style="metro">
+   Dark mode:    <html data-style="metro" data-theme="dark">
+   ========================================================================== */
+
+/* --- Design Tokens --- */
+html[data-style="metro"] {
+  --metro-bg: #ffffff;
+  --metro-bg-secondary: #f0f4f8;
+  --metro-surface: #ffffff;
+  --metro-surface-alt: #B8DDF7;
+  --metro-border: #d8e2ec;
+
+  --metro-primary: #02132E;
+  --metro-primary-soft: #3C6DA6;
+  --metro-secondary: #3C6DA6;
+  --metro-accent: #9DBFE2;
+  --metro-highlight: #BFE6FD;
+  --metro-tile-light: #B8DDF7;
+
+  --metro-text: #02132E;
+  --metro-text-secondary: #3C6DA6;
+  --metro-text-muted: #6b8aab;
+  --metro-text-on-dark: #ffffff;
+  --metro-text-on-accent: #02132E;
+
+  --metro-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --metro-duration: 250ms;
+  --metro-radius: 4px;
+
+  --metro-sidebar-width: 220px;
+  --metro-topbar-height: 48px;
+  --metro-gap: 6px;
+}
+
+html[data-style="metro"][data-theme="dark"] {
+  --metro-bg: #02132E;
+  --metro-bg-secondary: #0a1f3a;
+  --metro-surface: #112840;
+  --metro-surface-alt: #15304D;
+  --metro-border: #1a3859;
+
+  --metro-primary: #BFE6FD;
+  --metro-primary-soft: #9DBFE2;
+  --metro-secondary: #9DBFE2;
+  --metro-accent: #3C6DA6;
+  --metro-highlight: #1a3859;
+  --metro-tile-light: #15304D;
+
+  --metro-text: #BFE6FD;
+  --metro-text-secondary: #9DBFE2;
+  --metro-text-muted: #6b8aab;
+  --metro-text-on-dark: #BFE6FD;
+  --metro-text-on-accent: #02132E;
+}
+
+
+/* ==========================================================================
+   LAYOUT OVERRIDES — Hide glass, show metro
+   ========================================================================== */
+
+/* Hide glass theme content when metro is active */
+html[data-style="metro"] .hero-section,
+html[data-style="metro"] .home-section {
+  display: none !important;
+}
+
+/* Show metro dashboard */
+html[data-style="metro"] .metro-dashboard {
+  display: block;
+}
+
+/* Hide glass sidebar */
+html[data-style="metro"] .sidebar {
+  display: none !important;
+}
+
+/* Adjust main content area */
+html[data-style="metro"] #main {
+  margin-left: 0 !important;
+  padding: 0 !important;
+}
+
+html[data-style="metro"] .page__inner-wrap {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+html[data-style="metro"] article.page {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+
+/* ==========================================================================
+   BASE — Body reset for Metro
+   ========================================================================== */
+
+html[data-style="metro"] body {
+  background: var(--metro-bg);
+  color: var(--metro-text);
+  font-family: "Segoe UI", "Inter", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  transition: background 400ms var(--metro-easing),
+              color 400ms var(--metro-easing);
+}
+
+html[data-style="metro"] body::before {
+  display: none;
+}
+
+
+/* ==========================================================================
+   MASTHEAD — Metro Top Bar
+   ========================================================================== */
+
+html[data-style="metro"] .masthead {
+  background: var(--metro-primary);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
+  height: var(--metro-topbar-height);
+  position: fixed;
+  top: 0;
+  left: var(--metro-sidebar-width);
+  right: 0;
+  width: auto;
+  z-index: 30;
+  animation: none;
+  transition: background 400ms var(--metro-easing);
+}
+
+html[data-style="metro"] .masthead__inner-wrap {
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  max-width: none;
+  border-radius: 0;
+  height: var(--metro-topbar-height);
+  display: flex;
+  align-items: center;
+  padding: 0 1.2rem;
+}
+
+html[data-style="metro"] .greedy-nav {
+  background: transparent;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+html[data-style="metro"] .greedy-nav button {
+  background: transparent;
+  display: none;
+}
+
+html[data-style="metro"] .visible-links {
+  display: flex !important;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+html[data-style="metro"] .masthead__menu-item {
+  background: transparent;
+}
+
+html[data-style="metro"] .masthead__menu-item a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 400;
+  padding: 0.4em 0.8em;
+  border-radius: var(--metro-radius);
+  transition: color var(--metro-duration) var(--metro-easing),
+              background var(--metro-duration) var(--metro-easing);
+}
+
+html[data-style="metro"] .masthead__menu-item a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-style="metro"] .masthead__menu-item.selected a {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border-bottom: none !important;
+  font-weight: 600;
+}
+
+/* Hide site title in top bar (shown in sidebar instead) */
+html[data-style="metro"] .masthead__menu-item--lg {
+  display: none !important;
+}
+
+/* Theme & style toggle buttons in top bar */
+html[data-style="metro"] #theme-toggle a,
+html[data-style="metro"] #style-toggle a {
+  color: rgba(255, 255, 255, 0.7) !important;
+  border-radius: var(--metro-radius) !important;
+  padding: 0.4em 0.6em !important;
+}
+
+html[data-style="metro"] #theme-toggle a:hover,
+html[data-style="metro"] #style-toggle a:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* ==========================================================================
+   DASHBOARD LAYOUT — Full Metro Dashboard
+   ========================================================================== */
+
+.metro-dashboard {
+  display: none;
+  padding-top: var(--metro-topbar-height);
+  padding-left: var(--metro-sidebar-width);
+  min-height: 100vh;
+  background: var(--metro-bg);
+  transition: background 400ms var(--metro-easing);
+}
+
+
+/* ==========================================================================
+   LEFT SIDEBAR — Metro Navigation
+   ========================================================================== */
+
+.metro-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--metro-sidebar-width);
+  background: var(--metro-primary);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: background 400ms var(--metro-easing);
+}
+
+.metro-sidebar__brand {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.metro-sidebar__brand h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.metro-sidebar__brand span {
+  display: block;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.metro-sidebar__nav {
+  flex: 1;
+  padding: 0.5rem 0;
+}
+
+.metro-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: color var(--metro-duration) var(--metro-easing),
+              background var(--metro-duration) var(--metro-easing);
+  border-left: 3px solid transparent;
+}
+
+.metro-nav-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+}
+
+.metro-nav-item.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-left-color: var(--metro-accent);
+}
+
+.metro-nav-item i {
+  width: 18px;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.metro-nav-item.active i {
+  opacity: 1;
+}
+
+.metro-nav-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 0.4rem 1rem;
+}
+
+/* User info at bottom of sidebar */
+.metro-sidebar__user {
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.metro-sidebar__user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--metro-radius);
+  object-fit: cover;
+}
+
+.metro-sidebar__user-info {
+  min-width: 0;
+}
+
+.metro-sidebar__user-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metro-sidebar__user-role {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ==========================================================================
+   MAIN CONTENT — Dashboard Grid
+   ========================================================================== */
+
+.metro-content {
+  padding: 1.2rem;
+  max-width: 1100px;
+}
+
+/* Page title */
+.metro-page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--metro-text);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.metro-page-subtitle {
+  font-size: 0.85rem;
+  color: var(--metro-text-muted);
+  margin-bottom: 1.2rem;
+}
+
+
+/* ==========================================================================
+   TILE GRID — Metro Tile System
+   ========================================================================== */
+
+.metro-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--metro-gap);
+}
+
+/* Tile base */
+.metro-tile {
+  background: var(--metro-surface);
+  border: 1px solid var(--metro-border);
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--metro-duration) var(--metro-easing),
+              background var(--metro-duration) var(--metro-easing),
+              border-color var(--metro-duration) var(--metro-easing);
+  animation: metroTileIn 400ms var(--metro-easing) both;
+}
+
+.metro-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--metro-accent);
+}
+
+.metro-tile:active {
+  transform: scale(0.98);
+}
+
+/* Stagger animation delays */
+.metro-tile:nth-child(1)  { animation-delay: 0ms; }
+.metro-tile:nth-child(2)  { animation-delay: 40ms; }
+.metro-tile:nth-child(3)  { animation-delay: 80ms; }
+.metro-tile:nth-child(4)  { animation-delay: 120ms; }
+.metro-tile:nth-child(5)  { animation-delay: 160ms; }
+.metro-tile:nth-child(6)  { animation-delay: 200ms; }
+.metro-tile:nth-child(7)  { animation-delay: 240ms; }
+.metro-tile:nth-child(8)  { animation-delay: 280ms; }
+.metro-tile:nth-child(9)  { animation-delay: 320ms; }
+.metro-tile:nth-child(10) { animation-delay: 360ms; }
+.metro-tile:nth-child(11) { animation-delay: 400ms; }
+.metro-tile:nth-child(12) { animation-delay: 440ms; }
+
+@keyframes metroTileIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Tile sizes — asymmetric grid */
+.metro-tile--wide {
+  grid-column: span 2;
+}
+
+.metro-tile--tall {
+  grid-row: span 2;
+}
+
+.metro-tile--large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.metro-tile--full {
+  grid-column: span 4;
+}
+
+
+/* ==========================================================================
+   TILE VARIANTS — Color-coded tiles
+   ========================================================================== */
+
+/* Primary dark tile */
+.metro-tile--primary {
+  background: var(--metro-primary);
+  color: var(--metro-text-on-dark);
+  border-color: var(--metro-primary);
+}
+
+.metro-tile--primary:hover {
+  background: var(--metro-secondary);
+  border-color: var(--metro-secondary);
+}
+
+/* Accent colored tile */
+.metro-tile--accent {
+  background: var(--metro-accent);
+  color: var(--metro-text-on-accent);
+  border-color: var(--metro-accent);
+}
+
+.metro-tile--accent:hover {
+  background: var(--metro-highlight);
+  border-color: var(--metro-highlight);
+}
+
+/* Secondary blue tile */
+.metro-tile--secondary {
+  background: var(--metro-secondary);
+  color: var(--metro-text-on-dark);
+  border-color: var(--metro-secondary);
+}
+
+/* Light tile */
+.metro-tile--light {
+  background: var(--metro-tile-light);
+  color: var(--metro-text-on-accent);
+  border-color: var(--metro-tile-light);
+}
+
+
+/* ==========================================================================
+   TILE CONTENT — Stats, Labels, Icons
+   ========================================================================== */
+
+/* Stat tile — big number */
+.metro-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 100px;
+}
+
+.metro-stat__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.metro-stat__value {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.metro-stat__detail {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+/* Tile header */
+.metro-tile__header {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+  opacity: 0.7;
+}
+
+.metro-tile__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Tile icon (bottom-right corner) */
+.metro-tile__icon {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 0.8rem;
+  font-size: 2.5rem;
+  opacity: 0.15;
+}
+
+.metro-tile--primary .metro-tile__icon,
+.metro-tile--secondary .metro-tile__icon {
+  opacity: 0.2;
+}
+
+
+/* ==========================================================================
+   POST LIST IN TILE
+   ========================================================================== */
+
+.metro-post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.metro-post-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--metro-border);
+  text-decoration: none;
+  color: inherit;
+  transition: padding-left var(--metro-duration) var(--metro-easing),
+              background var(--metro-duration) var(--metro-easing);
+}
+
+.metro-post-item:last-child {
+  border-bottom: none;
+}
+
+.metro-post-item:hover {
+  padding-left: 0.3rem;
+  text-decoration: none;
+}
+
+.metro-post-item__date {
+  font-size: 0.7rem;
+  color: var(--metro-text-muted);
+  white-space: nowrap;
+  min-width: 52px;
+  font-variant-numeric: tabular-nums;
+}
+
+.metro-post-item__title {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--metro-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metro-tile--primary .metro-post-item,
+.metro-tile--secondary .metro-post-item {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.metro-tile--primary .metro-post-item__date,
+.metro-tile--secondary .metro-post-item__date {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.metro-tile--primary .metro-post-item__title,
+.metro-tile--secondary .metro-post-item__title {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* ==========================================================================
+   NAV TILES — Clickable navigation blocks
+   ========================================================================== */
+
+.metro-nav-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  min-height: 80px;
+}
+
+.metro-nav-tile:hover {
+  text-decoration: none;
+}
+
+.metro-nav-tile__icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.metro-nav-tile__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.metro-nav-tile__desc {
+  font-size: 0.68rem;
+  opacity: 0.6;
+  margin-top: 0.15rem;
+}
+
+
+/* ==========================================================================
+   CALENDAR TILE
+   ========================================================================== */
+
+.metro-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 100px;
+}
+
+.metro-calendar__month {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.metro-calendar__day {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.metro-calendar__weekday {
+  font-size: 0.72rem;
+  opacity: 0.6;
+  margin-top: 0.2rem;
+}
+
+
+/* ==========================================================================
+   USER TILE — Profile card
+   ========================================================================== */
+
+.metro-user-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  min-height: 140px;
+}
+
+.metro-user-tile__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--metro-radius);
+  object-fit: cover;
+  margin-bottom: 0.6rem;
+}
+
+.metro-user-tile__name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.metro-user-tile__bio {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  margin-top: 0.2rem;
+  max-width: 180px;
+  line-height: 1.4;
+}
+
+.metro-user-tile__links {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.metro-user-tile__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.15);
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: background var(--metro-duration) var(--metro-easing);
+}
+
+.metro-tile--primary .metro-user-tile__link {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.metro-tile--primary .metro-user-tile__link:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.metro-tile:not(.metro-tile--primary):not(.metro-tile--secondary) .metro-user-tile__link {
+  background: var(--metro-bg-secondary);
+  color: var(--metro-text-secondary);
+}
+
+.metro-tile:not(.metro-tile--primary):not(.metro-tile--secondary) .metro-user-tile__link:hover {
+  background: var(--metro-accent);
+  color: var(--metro-text-on-accent);
+}
+
+
+/* ==========================================================================
+   TAG CLOUD TILE
+   ========================================================================== */
+
+.metro-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.metro-tag {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--metro-bg-secondary);
+  color: var(--metro-text-secondary);
+  text-decoration: none;
+  transition: background var(--metro-duration) var(--metro-easing),
+              color var(--metro-duration) var(--metro-easing);
+}
+
+.metro-tag:hover {
+  background: var(--metro-secondary);
+  color: var(--metro-text-on-dark);
+  text-decoration: none;
+}
+
+.metro-tile--primary .metro-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metro-tile--primary .metro-tag:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+
+/* ==========================================================================
+   TIMELINE TILE
+   ========================================================================== */
+
+.metro-timeline {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.metro-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--metro-border);
+}
+
+.metro-timeline-item {
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.metro-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.metro-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.2rem;
+  top: 0.35rem;
+  width: 8px;
+  height: 8px;
+  background: var(--metro-secondary);
+  margin-left: -3px;
+}
+
+.metro-timeline-item__date {
+  font-size: 0.68rem;
+  color: var(--metro-text-muted);
+}
+
+.metro-timeline-item__title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--metro-text);
+}
+
+.metro-timeline-item__venue {
+  font-size: 0.7rem;
+  color: var(--metro-text-muted);
+}
+
+
+/* ==========================================================================
+   VIEW ALL LINK — Metro style
+   ========================================================================== */
+
+.metro-view-all {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--metro-text-secondary);
+  text-decoration: none;
+  text-align: right;
+  transition: color var(--metro-duration) var(--metro-easing);
+}
+
+.metro-view-all:hover {
+  color: var(--metro-text);
+  text-decoration: none;
+}
+
+.metro-tile--primary .metro-view-all,
+.metro-tile--secondary .metro-view-all {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.metro-tile--primary .metro-view-all:hover,
+.metro-tile--secondary .metro-view-all:hover {
+  color: #ffffff;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE — Collapse grid for smaller screens
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  :root {
+    --metro-sidebar-width: 0px;
+  }
+
+  .metro-sidebar {
+    display: none;
+  }
+
+  .metro-dashboard {
+    padding-left: 0;
+  }
+
+  html[data-style="metro"] .masthead {
+    left: 0;
+  }
+
+  html[data-style="metro"] .masthead__menu-item--lg {
+    display: block !important;
+  }
+
+  .metro-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metro-tile--wide,
+  .metro-tile--large {
+    grid-column: span 2;
+  }
+
+  .metro-tile--full {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .metro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metro-tile--wide,
+  .metro-tile--tall,
+  .metro-tile--large,
+  .metro-tile--full {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .metro-content {
+    padding: 0.8rem;
+  }
+
+  .metro-page-title {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-style="metro"] * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
