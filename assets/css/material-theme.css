@@ -1,0 +1,807 @@
+/* ==========================================================================
+   MATERIAL THEME — Design Tokens & Components
+   Color Palette: #02132E #9DBFE2 #BFE6FD #3C6DA6 #B8DDF7
+   Activated by: <html data-style="material">
+   Dark mode:    <html data-style="material" data-theme="dark">
+   ========================================================================== */
+
+/* --- Design Tokens --- */
+html[data-style="material"] {
+  /* Primary */
+  --md-primary: #02132E;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #BFE6FD;
+  --md-on-primary-container: #02132E;
+
+  /* Secondary */
+  --md-secondary: #3C6DA6;
+  --md-on-secondary: #ffffff;
+  --md-secondary-container: #B8DDF7;
+  --md-on-secondary-container: #02132E;
+
+  /* Tertiary */
+  --md-tertiary: #9DBFE2;
+  --md-on-tertiary: #02132E;
+
+  /* Surfaces */
+  --md-surface: #F8FBFF;
+  --md-surface-dim: #E8EEF5;
+  --md-surface-container-lowest: #ffffff;
+  --md-surface-container-low: #F2F6FA;
+  --md-surface-container: #ECF1F7;
+  --md-surface-container-high: #E6ECF3;
+  --md-surface-container-highest: #DFE7EF;
+  --md-on-surface: #02132E;
+  --md-on-surface-variant: #3C6DA6;
+  --md-outline: #9DBFE2;
+  --md-outline-variant: #B8DDF7;
+
+  /* Elevation shadows */
+  --md-shadow-1: 0 1px 3px rgba(2, 19, 46, 0.08), 0 1px 2px rgba(2, 19, 46, 0.06);
+  --md-shadow-2: 0 3px 6px rgba(2, 19, 46, 0.1), 0 2px 4px rgba(2, 19, 46, 0.06);
+  --md-shadow-3: 0 8px 24px rgba(2, 19, 46, 0.12), 0 4px 8px rgba(2, 19, 46, 0.06);
+  --md-shadow-4: 0 16px 48px rgba(2, 19, 46, 0.14), 0 8px 16px rgba(2, 19, 46, 0.08);
+
+  /* Shape */
+  --md-radius-xs: 8px;
+  --md-radius-sm: 12px;
+  --md-radius-md: 16px;
+  --md-radius-lg: 24px;
+  --md-radius-xl: 28px;
+  --md-radius-full: 9999px;
+
+  /* Motion */
+  --md-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --md-easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --md-duration-fast: 180ms;
+  --md-duration-normal: 300ms;
+  --md-duration-slow: 500ms;
+
+  /* Typography */
+  --md-font: "Google Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --md-font-display: "Google Sans Display", "Segoe UI", system-ui, sans-serif;
+}
+
+/* --- Dark Mode Tokens --- */
+html[data-style="material"][data-theme="dark"] {
+  --md-primary: #BFE6FD;
+  --md-on-primary: #02132E;
+  --md-primary-container: #3C6DA6;
+  --md-on-primary-container: #BFE6FD;
+
+  --md-secondary: #B8DDF7;
+  --md-on-secondary: #02132E;
+  --md-secondary-container: #3C6DA6;
+  --md-on-secondary-container: #B8DDF7;
+
+  --md-tertiary: #9DBFE2;
+  --md-on-tertiary: #02132E;
+
+  --md-surface: #0A1929;
+  --md-surface-dim: #02132E;
+  --md-surface-container-lowest: #0D1F33;
+  --md-surface-container-low: #112840;
+  --md-surface-container: #15304D;
+  --md-surface-container-high: #1A3859;
+  --md-surface-container-highest: #1F4066;
+  --md-on-surface: #BFE6FD;
+  --md-on-surface-variant: #9DBFE2;
+  --md-outline: #3C6DA6;
+  --md-outline-variant: #1A3859;
+
+  --md-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --md-shadow-2: 0 3px 6px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --md-shadow-3: 0 8px 24px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.25);
+  --md-shadow-4: 0 16px 48px rgba(0, 0, 0, 0.5), 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ==========================================================================
+   BASE — Body, Selection, Scrollbar
+   ========================================================================== */
+
+html[data-style="material"] body {
+  background: var(--md-surface);
+  color: var(--md-on-surface);
+  font-family: var(--md-font);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--md-duration-slow) var(--md-easing),
+              color var(--md-duration-slow) var(--md-easing);
+}
+
+/* Remove glass theme background gradient */
+html[data-style="material"] body::before {
+  display: none;
+}
+
+html[data-style="material"] ::selection {
+  background: rgba(60, 109, 166, 0.25);
+  color: inherit;
+}
+
+html[data-style="material"][data-theme="dark"] ::selection {
+  background: rgba(191, 230, 253, 0.2);
+}
+
+html[data-style="material"] ::-webkit-scrollbar { width: 6px; }
+html[data-style="material"] ::-webkit-scrollbar-track { background: transparent; }
+html[data-style="material"] ::-webkit-scrollbar-thumb {
+  background: var(--md-outline);
+  border-radius: 3px;
+}
+html[data-style="material"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--md-secondary);
+}
+
+
+/* ==========================================================================
+   MASTHEAD — Material Navigation Bar
+   ========================================================================== */
+
+html[data-style="material"] .masthead {
+  background: var(--md-surface-container);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid var(--md-outline-variant);
+  box-shadow: var(--md-shadow-1);
+  animation: mdSlideDown var(--md-duration-normal) var(--md-easing) both;
+  transition: background var(--md-duration-slow) var(--md-easing),
+              box-shadow var(--md-duration-normal) var(--md-easing),
+              border-color var(--md-duration-slow) var(--md-easing);
+}
+
+html[data-style="material"] .masthead__inner-wrap {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  margin: 0 auto;
+  max-width: 1200px;
+  border-radius: 0;
+}
+
+html[data-style="material"] .greedy-nav {
+  background: transparent;
+}
+
+html[data-style="material"] .greedy-nav button {
+  background-color: transparent;
+}
+
+html[data-style="material"] .masthead__menu-item {
+  background-color: transparent;
+  border-radius: var(--md-radius-full);
+}
+
+html[data-style="material"] .masthead__menu-item a {
+  padding: 0.4em 0.9em;
+  border-radius: var(--md-radius-full);
+  color: var(--md-on-surface-variant);
+  transition: background var(--md-duration-fast) var(--md-easing),
+              color var(--md-duration-fast) var(--md-easing),
+              transform var(--md-duration-fast) var(--md-easing);
+}
+
+html[data-style="material"] .masthead__menu-item a:hover {
+  background: var(--md-secondary-container);
+  color: var(--md-on-secondary-container);
+  transform: none;
+}
+
+html[data-style="material"] .masthead__menu-item.selected a {
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+  font-weight: 600;
+  border-bottom: none !important;
+}
+
+html[data-style="material"] #theme-toggle a {
+  border-radius: var(--md-radius-full) !important;
+  padding: 0.45em 0.6em !important;
+  color: var(--md-on-surface-variant);
+}
+
+html[data-style="material"] #theme-toggle a:hover {
+  background: var(--md-secondary-container) !important;
+  color: var(--md-on-secondary-container) !important;
+  transform: none !important;
+}
+
+/* Style toggle button */
+html[data-style="material"] #style-toggle a {
+  border-radius: var(--md-radius-full) !important;
+  padding: 0.45em 0.6em !important;
+  color: var(--md-on-surface-variant);
+  transition: background var(--md-duration-fast) var(--md-easing),
+              color var(--md-duration-fast) var(--md-easing);
+}
+
+html[data-style="material"] #style-toggle a:hover {
+  background: var(--md-secondary-container) !important;
+  color: var(--md-on-secondary-container) !important;
+  transform: none !important;
+}
+
+
+/* ==========================================================================
+   HERO SECTION — Material Style
+   ========================================================================== */
+
+html[data-style="material"] .hero-section {
+  background: linear-gradient(
+    180deg,
+    var(--md-primary-container) 0%,
+    var(--md-surface) 100%
+  );
+  padding: 5rem 1.5rem 4rem;
+}
+
+html[data-style="material"][data-theme="dark"] .hero-section {
+  background: linear-gradient(
+    180deg,
+    var(--md-surface-dim) 0%,
+    var(--md-surface) 100%
+  );
+}
+
+/* Hide orbs in material mode */
+html[data-style="material"] .hero-bg-orbs {
+  display: none;
+}
+
+html[data-style="material"] .hero-card {
+  background: var(--md-surface-container-lowest);
+  border: none;
+  border-radius: var(--md-radius-xl);
+  box-shadow: var(--md-shadow-3);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 3rem 2.5rem;
+}
+
+html[data-style="material"] .hero-avatar img {
+  border: 4px solid var(--md-primary-container);
+  box-shadow: var(--md-shadow-2);
+}
+
+html[data-style="material"] .hero-avatar img:hover {
+  transform: scale(1.04);
+  box-shadow: var(--md-shadow-3);
+}
+
+html[data-style="material"] .hero-name {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  color: var(--md-primary);
+  font-family: var(--md-font-display);
+}
+
+html[data-style="material"][data-theme="dark"] .hero-name {
+  color: var(--md-primary);
+}
+
+html[data-style="material"] .hero-tagline {
+  color: var(--md-on-surface-variant);
+}
+
+html[data-style="material"] .meta-chip {
+  background: var(--md-secondary-container);
+  border: none;
+  color: var(--md-on-secondary-container);
+  border-radius: var(--md-radius-full);
+  padding: 0.35rem 0.9rem;
+  font-weight: 500;
+}
+
+html[data-style="material"] .meta-chip:hover {
+  background: var(--md-tertiary);
+  color: var(--md-on-tertiary);
+  transform: none;
+}
+
+html[data-style="material"] .social-link {
+  background: var(--md-surface-container);
+  border: 1px solid var(--md-outline-variant);
+  color: var(--md-secondary);
+  border-radius: var(--md-radius-full);
+  transition: background var(--md-duration-fast) var(--md-easing),
+              color var(--md-duration-fast) var(--md-easing),
+              box-shadow var(--md-duration-fast) var(--md-easing),
+              transform var(--md-duration-fast) var(--md-easing-spring);
+}
+
+html[data-style="material"] .social-link:hover {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  box-shadow: var(--md-shadow-2);
+  transform: translateY(-2px) scale(1.05);
+}
+
+
+/* ==========================================================================
+   CARDS — Material Surface Cards
+   ========================================================================== */
+
+html[data-style="material"] .glass-card {
+  background: var(--md-surface-container-lowest);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-lg);
+  box-shadow: var(--md-shadow-1);
+  transition: box-shadow var(--md-duration-normal) var(--md-easing),
+              transform var(--md-duration-normal) var(--md-easing);
+}
+
+html[data-style="material"] .glass-card:hover {
+  box-shadow: var(--md-shadow-3);
+  transform: translateY(-3px);
+}
+
+html[data-style="material"] .section-title {
+  color: var(--md-primary);
+  border-bottom-color: var(--md-outline-variant);
+  font-family: var(--md-font-display);
+}
+
+html[data-style="material"] .section-title i {
+  color: var(--md-secondary);
+}
+
+html[data-style="material"] .about-content p {
+  color: var(--md-on-surface-variant);
+  line-height: 1.8;
+}
+
+
+/* ==========================================================================
+   POST LIST — Material Style
+   ========================================================================== */
+
+html[data-style="material"] .post-item {
+  border-radius: var(--md-radius-md);
+  transition: background var(--md-duration-fast) var(--md-easing),
+              transform var(--md-duration-fast) var(--md-easing);
+}
+
+html[data-style="material"] .post-item + .post-item {
+  border-top-color: var(--md-outline-variant);
+}
+
+html[data-style="material"] .post-item:hover {
+  background: var(--md-secondary-container);
+  transform: translateX(6px);
+}
+
+html[data-style="material"] .post-item-date {
+  background: var(--md-primary-container);
+  border-radius: var(--md-radius-sm);
+}
+
+html[data-style="material"] .post-day {
+  color: var(--md-on-primary-container);
+}
+
+html[data-style="material"] .post-month {
+  color: var(--md-on-surface-variant);
+}
+
+html[data-style="material"] .post-item-title {
+  color: var(--md-on-surface);
+  font-weight: 600;
+}
+
+html[data-style="material"] .post-item-excerpt {
+  color: var(--md-on-surface-variant);
+}
+
+html[data-style="material"] .view-all-link {
+  color: var(--md-primary);
+  font-weight: 600;
+}
+
+
+/* ==========================================================================
+   QUICK LINKS — Material Tonal Buttons
+   ========================================================================== */
+
+html[data-style="material"] .quick-link-card {
+  background: var(--md-surface-container);
+  border: none;
+  border-radius: var(--md-radius-lg);
+  transition: background var(--md-duration-fast) var(--md-easing),
+              box-shadow var(--md-duration-fast) var(--md-easing),
+              transform var(--md-duration-fast) var(--md-easing-spring);
+}
+
+html[data-style="material"] .quick-link-card:hover {
+  background: var(--md-secondary-container);
+  box-shadow: var(--md-shadow-2);
+  transform: translateY(-2px);
+}
+
+html[data-style="material"] .qlc-icon {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  border-radius: var(--md-radius-md);
+}
+
+html[data-style="material"] .qlc-text h3 {
+  color: var(--md-on-surface);
+}
+
+html[data-style="material"] .qlc-text p {
+  color: var(--md-on-surface-variant);
+}
+
+
+/* ==========================================================================
+   SIDEBAR — Material Card
+   ========================================================================== */
+
+html[data-style="material"] .sidebar > div {
+  background: var(--md-surface-container-lowest);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-lg);
+  box-shadow: var(--md-shadow-1);
+  transition: box-shadow var(--md-duration-normal) var(--md-easing),
+              transform var(--md-duration-normal) var(--md-easing);
+}
+
+html[data-style="material"] .sidebar > div:hover {
+  box-shadow: var(--md-shadow-3);
+  transform: translateY(-2px);
+}
+
+html[data-style="material"] .author__avatar img {
+  border: 3px solid var(--md-primary-container) !important;
+  box-shadow: var(--md-shadow-1);
+}
+
+html[data-style="material"] .author__urls a {
+  color: var(--md-on-surface-variant);
+  transition: background var(--md-duration-fast) var(--md-easing),
+              color var(--md-duration-fast) var(--md-easing),
+              transform var(--md-duration-fast) var(--md-easing);
+}
+
+html[data-style="material"] .author__urls a:hover {
+  background: var(--md-secondary-container);
+  color: var(--md-on-secondary-container);
+  transform: translateX(4px);
+}
+
+html[data-style="material"] .author__urls-wrapper > .btn {
+  background: var(--md-primary) !important;
+  color: var(--md-on-primary) !important;
+  border: none;
+  border-radius: var(--md-radius-full) !important;
+  font-weight: 600;
+  transition: background var(--md-duration-fast) var(--md-easing),
+              box-shadow var(--md-duration-fast) var(--md-easing),
+              transform var(--md-duration-fast) var(--md-easing-spring) !important;
+}
+
+html[data-style="material"] .author__urls-wrapper > .btn:hover {
+  background: var(--md-secondary) !important;
+  box-shadow: var(--md-shadow-2);
+  transform: translateY(-1px) !important;
+}
+
+
+/* ==========================================================================
+   ARTICLE PAGE — Material Content Card
+   ========================================================================== */
+
+html[data-style="material"] article.page {
+  background: var(--md-surface-container-lowest);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-lg);
+  box-shadow: var(--md-shadow-1);
+  transition: box-shadow var(--md-duration-normal) var(--md-easing);
+}
+
+html[data-style="material"] #main {
+  animation: mdFadeInUp var(--md-duration-normal) var(--md-easing) both;
+  animation-delay: 0.15s;
+}
+
+
+/* ==========================================================================
+   PAGE HERO OVERLAY — Material Gradient
+   ========================================================================== */
+
+html[data-style="material"] .page__hero--overlay::before {
+  background: linear-gradient(
+    180deg,
+    rgba(2, 19, 46, 0.5) 0%,
+    rgba(60, 109, 166, 0.3) 100%
+  );
+}
+
+html[data-style="material"][data-theme="dark"] .page__hero--overlay::before {
+  background: linear-gradient(
+    180deg,
+    rgba(2, 19, 46, 0.7) 0%,
+    rgba(60, 109, 166, 0.4) 100%
+  );
+}
+
+
+/* ==========================================================================
+   ARCHIVE ITEMS — Material Cards
+   ========================================================================== */
+
+html[data-style="material"] .archive__item {
+  background: var(--md-surface-container-lowest);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-lg);
+  box-shadow: var(--md-shadow-1);
+  transition: box-shadow var(--md-duration-normal) var(--md-easing),
+              transform var(--md-duration-normal) var(--md-easing);
+}
+
+html[data-style="material"] .archive__item:hover {
+  box-shadow: var(--md-shadow-3);
+  transform: translateY(-3px);
+}
+
+
+/* ==========================================================================
+   TABLE OF CONTENTS
+   ========================================================================== */
+
+html[data-style="material"] .toc {
+  background: var(--md-surface-container);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid var(--md-outline-variant) !important;
+  border-radius: var(--md-radius-lg) !important;
+  box-shadow: var(--md-shadow-1);
+}
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+html[data-style="material"] .page__footer {
+  background: var(--md-surface-container);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: 1px solid var(--md-outline-variant);
+  transition: background var(--md-duration-slow) var(--md-easing);
+}
+
+
+/* ==========================================================================
+   CONTENT TYPOGRAPHY & ELEMENTS
+   ========================================================================== */
+
+/* Links */
+html[data-style="material"] .page__content a:not(.btn) {
+  color: var(--md-secondary);
+  font-weight: 500;
+}
+
+html[data-style="material"] .page__content a:not(.btn)::after {
+  background: var(--md-secondary);
+}
+
+html[data-style="material"] .page__content li a,
+html[data-style="material"] .page__content dl a {
+  color: var(--md-secondary);
+}
+
+html[data-style="material"] .page__content li a::after,
+html[data-style="material"] .page__content dl a::after {
+  background: var(--md-secondary);
+}
+
+/* Buttons */
+html[data-style="material"] .btn {
+  border-radius: var(--md-radius-full) !important;
+  background: var(--md-primary) !important;
+  color: var(--md-on-primary) !important;
+  border: none !important;
+  font-weight: 600;
+  padding: 0.6em 1.5em !important;
+  transition: background var(--md-duration-fast) var(--md-easing),
+              box-shadow var(--md-duration-fast) var(--md-easing),
+              transform var(--md-duration-fast) var(--md-easing-spring) !important;
+}
+
+html[data-style="material"] .btn:hover {
+  background: var(--md-secondary) !important;
+  box-shadow: var(--md-shadow-2);
+  transform: translateY(-1px) scale(1.02) !important;
+}
+
+/* Code blocks */
+html[data-style="material"] .highlight,
+html[data-style="material"] pre {
+  background: var(--md-surface-container) !important;
+  border: 1px solid var(--md-outline-variant) !important;
+  border-radius: var(--md-radius-md) !important;
+  box-shadow: none;
+}
+
+/* Tables */
+html[data-style="material"] table {
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-md);
+  overflow: hidden;
+}
+
+html[data-style="material"] thead {
+  background-color: var(--md-primary-container);
+}
+
+html[data-style="material"] th {
+  color: var(--md-on-primary-container);
+}
+
+html[data-style="material"] td {
+  border-bottom-color: var(--md-outline-variant);
+  border-right-color: var(--md-outline-variant);
+}
+
+/* Blockquote */
+html[data-style="material"] blockquote {
+  border-left: 4px solid var(--md-primary) !important;
+  background: var(--md-surface-container) !important;
+  border-radius: 0 var(--md-radius-sm) var(--md-radius-sm) 0;
+}
+
+/* Page title */
+html[data-style="material"] .page__title::after {
+  background: var(--md-primary);
+  height: 3px;
+  border-radius: 2px;
+}
+
+/* Images */
+html[data-style="material"] img {
+  border-radius: var(--md-radius-md);
+}
+
+html[data-style="material"] .page__content img:hover {
+  box-shadow: var(--md-shadow-3);
+}
+
+
+/* ==========================================================================
+   SCROLL REVEAL — Material Stagger Animation
+   ========================================================================== */
+
+html[data-style="material"] .reveal {
+  transition: opacity var(--md-duration-slow) var(--md-easing),
+              transform var(--md-duration-slow) var(--md-easing);
+}
+
+html[data-style="material"] .reveal-scale {
+  transition: opacity var(--md-duration-normal) var(--md-easing-spring),
+              transform var(--md-duration-normal) var(--md-easing-spring);
+}
+
+html[data-style="material"] .reveal-stagger > * {
+  transition: opacity var(--md-duration-normal) var(--md-easing),
+              transform var(--md-duration-normal) var(--md-easing);
+}
+
+html[data-style="material"] .hero-card {
+  animation: mdRevealScale var(--md-duration-slow) var(--md-easing-spring) both;
+  animation-delay: 0.1s;
+}
+
+html[data-style="material"] .hero-name {
+  animation: mdFadeInUp var(--md-duration-normal) var(--md-easing) both;
+  animation-delay: 0.25s;
+}
+
+html[data-style="material"] .hero-tagline {
+  animation: mdFadeInUp var(--md-duration-normal) var(--md-easing) both;
+  animation-delay: 0.35s;
+}
+
+html[data-style="material"] .hero-meta {
+  animation: mdFadeInUp var(--md-duration-normal) var(--md-easing) both;
+  animation-delay: 0.4s;
+}
+
+html[data-style="material"] .hero-social {
+  animation: mdFadeInUp var(--md-duration-normal) var(--md-easing) both;
+  animation-delay: 0.5s;
+}
+
+
+/* ==========================================================================
+   KEYFRAMES — Material Motion
+   ========================================================================== */
+
+@keyframes mdSlideDown {
+  0% { opacity: 0; transform: translateY(-12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mdFadeInUp {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mdRevealScale {
+  0% { opacity: 0; transform: scale(0.95) translateY(12px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  html[data-style="material"] .hero-section {
+    padding: 3.5rem 1rem 2.5rem;
+  }
+
+  html[data-style="material"] .hero-card {
+    padding: 2rem 1.5rem;
+    border-radius: var(--md-radius-lg);
+  }
+
+  html[data-style="material"] .glass-card,
+  html[data-style="material"] article.page,
+  html[data-style="material"] .sidebar > div,
+  html[data-style="material"] .archive__item {
+    border-radius: var(--md-radius-md);
+  }
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-style="material"] *,
+  html[data-style="material"] *::before,
+  html[data-style="material"] *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html[data-style="material"] .reveal,
+  html[data-style="material"] .reveal-scale {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ==========================================================================
+   THEME TRANSITION OVERLAY — Smooth switching effect
+   ========================================================================== */
+
+.md-theme-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: var(--md-surface);
+  opacity: 0;
+  transition: opacity 250ms var(--md-easing);
+}
+
+.md-theme-transition.active {
+  opacity: 1;
+  pointer-events: all;
+}

@@ -24,6 +24,7 @@ th {
   padding: 0.5em;
   font-weight: bold;
   text-align: left;
+  color: var(--global-code-text-color, #333);
   border-right: 1px solid var(--global-border-color);
 }
 

@@ -22,7 +22,44 @@ let determineComputedTheme = () => {
 // detect OS/browser preference
 const browserPref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-// Set the theme on page load or when explicitly called
+// --- Style (glass / material) ---
+let determineStyleSetting = () => {
+  let s = localStorage.getItem("style");
+  return (s === "material") ? "material" : "glass";
+};
+
+let setStyle = (style) => {
+  const use_style = style || determineStyleSetting();
+  if (use_style === "material") {
+    $("html").attr("data-style", "material");
+    $("#style-icon").removeClass("fa-palette").addClass("fa-layer-group");
+  } else {
+    $("html").removeAttr("data-style");
+    $("#style-icon").removeClass("fa-layer-group").addClass("fa-palette");
+  }
+};
+
+var toggleStyle = () => {
+  const current = $("html").attr("data-style");
+  const next = current === "material" ? "glass" : "material";
+
+  const overlay = document.createElement('div');
+  overlay.className = 'md-theme-transition';
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => {
+    overlay.classList.add('active');
+    setTimeout(() => {
+      localStorage.setItem("style", next);
+      setStyle(next);
+      setTimeout(() => {
+        overlay.classList.remove('active');
+        setTimeout(() => overlay.remove(), 300);
+      }, 100);
+    }, 250);
+  });
+};
+
+// --- Theme (light / dark) ---
 let setTheme = (theme) => {
   const use_theme =
     theme ||
@@ -39,7 +76,6 @@ let setTheme = (theme) => {
   }
 };
 
-// Toggle the theme manually
 var toggleTheme = () => {
   const current_theme = $("html").attr("data-theme");
   const new_theme = current_theme === "dark" ? "light" : "dark";
@@ -92,6 +128,7 @@ $(document).ready(function () {
 
   // If the user hasn't chosen a theme, follow the OS preference
   setTheme();
+  setStyle();
   window.matchMedia('(prefers-color-scheme: dark)')
         .addEventListener("change", (e) => {
           if (!localStorage.getItem("theme")) {
@@ -99,8 +136,9 @@ $(document).ready(function () {
           }
         });
 
-  // Enable the theme toggle
+  // Enable the theme and style toggles
   $('#theme-toggle').on('click', toggleTheme);
+  $('#style-toggle').on('click', toggleStyle);
 
   // Enable the sticky footer
   var bumpIt = function () {
