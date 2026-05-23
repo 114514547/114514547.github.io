@@ -1,7 +1,7 @@
 ---
 title: "从零搭建学术主页(3)：Academic Pages 专属内容目录"
 description: "从零搭建学术主页（3）"
-date: 2026-05-23T08:02:00.000Z
+date: 2026-05-23T06:32:00.000Z
 preview: ""
 tags: ["Academic pages", "GitHub Pages", "Jekyll"]
 categories: ["teaching"]
