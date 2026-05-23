@@ -182,6 +182,7 @@ comments: false
       <div class="metro-nav-divider"></div>
       <a href="/cv/" class="metro-nav-item"><i class="fas fa-id-card"></i> 简历</a>
       <a href="/about/" class="metro-nav-item"><i class="fas fa-user"></i> 关于</a>
+      <a href="/changelog/" class="metro-nav-item"><i class="fas fa-clock-rotate-left"></i> 更新日志</a>
       <div class="metro-nav-divider"></div>
       {% if site.author.github %}
       <a href="https://github.com/{{ site.author.github }}" class="metro-nav-item" target="_blank"><i class="fab fa-github"></i> GitHub</a>
