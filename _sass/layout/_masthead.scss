@@ -4,7 +4,6 @@
 
 .masthead {
   position: fixed;
-  background: var(--global-bg-color);
   height: fit-content;
   top: 0;
   width: 100%;
@@ -16,18 +15,21 @@
   z-index: 20;
 
   &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    background: var(--global-border-color);
-    width: 100%;
+    display: none;
   }
 
   &__inner-wrap {
     @include container;
     @include clearfix;
     padding: 0.5em 1em;
+    margin: 10px auto;
+    max-width: $x-large;
+    background: var(--glass-bg, rgba(255, 255, 255, 0.88));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.45));
+    border-radius: var(--radius-lg, 20px);
+    box-shadow: var(--glass-shadow, 0 8px 32px rgba(0, 0, 0, 0.08));
     font-family: $sans-serif-narrow;
 
     @include breakpoint($x-large) {
@@ -55,10 +57,11 @@
 }
 
 .masthead__menu-item {
-  background-color: var(--global-bg-color);
+  background-color: transparent;
   display: block;
   list-style-type: none;
   white-space: nowrap;
+  border-radius: var(--radius-sm, 10px);
 
   &--lg {
     padding-right: 2em;
