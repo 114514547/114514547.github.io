@@ -1,33 +1,32 @@
 /* ==========================================================================
    METRO THEME — Windows Metro / Fluent Dashboard
-   Color Palette: #FAB9AC #7BBC53 #DE6736 #67C1EC #E6B90D
-   Base: #2D2926
+   Color Palette: #2F2D54 #9193B4 #BD9AAD #E8D2B3
    Activated by: <html data-style="metro">
    Dark mode:    <html data-style="metro" data-theme="dark">
    ========================================================================== */
 
 /* --- Design Tokens --- */
 html[data-style="metro"] {
-  --metro-bg: #f5f5f5;
-  --metro-bg-secondary: #ececec;
+  --metro-bg: #f5f0ea;
+  --metro-bg-secondary: #ece6de;
   --metro-surface: #ffffff;
-  --metro-surface-alt: #FAB9AC;
-  --metro-border: #e0e0e0;
+  --metro-surface-alt: #E8D2B3;
+  --metro-border: #ddd5ca;
 
-  --metro-sidebar-bg: #2D2926;
+  --metro-sidebar-bg: #2F2D54;
 
-  --metro-primary: #FAB9AC;
-  --metro-primary-soft: #f5d0c6;
-  --metro-secondary: #67C1EC;
-  --metro-accent: #DE6736;
-  --metro-highlight: #c55a2a;
-  --metro-tile-light: #7BBC53;
+  --metro-primary: #E8D2B3;
+  --metro-primary-soft: #f0e4d0;
+  --metro-secondary: #BD9AAD;
+  --metro-accent: #9193B4;
+  --metro-highlight: #d4b898;
+  --metro-tile-light: #f0ebe4;
 
-  --metro-text: #2D2926;
-  --metro-text-secondary: #DE6736;
-  --metro-text-muted: #537380;
+  --metro-text: #2F2D54;
+  --metro-text-secondary: #BD9AAD;
+  --metro-text-muted: #9193B4;
   --metro-text-on-dark: #ffffff;
-  --metro-text-on-accent: #2D2926;
+  --metro-text-on-accent: #2F2D54;
 
   --metro-easing: cubic-bezier(0.22, 1, 0.36, 1);
   --metro-duration: 250ms;
@@ -39,26 +38,26 @@ html[data-style="metro"] {
 }
 
 html[data-style="metro"][data-theme="dark"] {
-  --metro-bg: #2D2926;
-  --metro-bg-secondary: #3a3532;
-  --metro-surface: #3f3a37;
-  --metro-surface-alt: #DE6736;
-  --metro-border: #4a4542;
+  --metro-bg: #2F2D54;
+  --metro-bg-secondary: #3a3862;
+  --metro-surface: #454372;
+  --metro-surface-alt: #BD9AAD;
+  --metro-border: #504e7d;
 
-  --metro-sidebar-bg: #2D2926;
+  --metro-sidebar-bg: #2F2D54;
 
-  --metro-primary: #FAB9AC;
-  --metro-primary-soft: #f5d0c6;
-  --metro-secondary: #67C1EC;
-  --metro-accent: #DE6736;
-  --metro-highlight: #c55a2a;
-  --metro-tile-light: #7BBC53;
+  --metro-primary: #E8D2B3;
+  --metro-primary-soft: #f0e4d0;
+  --metro-secondary: #BD9AAD;
+  --metro-accent: #9193B4;
+  --metro-highlight: #d4b898;
+  --metro-tile-light: #f0ebe4;
 
-  --metro-text: #FAB9AC;
-  --metro-text-secondary: #67C1EC;
-  --metro-text-muted: #67C1EC;
-  --metro-text-on-dark: #2D2926;
-  --metro-text-on-accent: #2D2926;
+  --metro-text: #E8D2B3;
+  --metro-text-secondary: #BD9AAD;
+  --metro-text-muted: #9193B4;
+  --metro-text-on-dark: #2F2D54;
+  --metro-text-on-accent: #2F2D54;
 }
 
 
@@ -466,7 +465,7 @@ html[data-style="metro"] #style-toggle a:hover {
    TILE VARIANTS — Color-coded tiles
    ========================================================================== */
 
-/* Primary tile — coral */
+/* Primary tile — warm beige */
 .metro-tile--primary {
   background: var(--metro-primary);
   color: var(--metro-text-on-accent);
@@ -492,7 +491,7 @@ html[data-style="metro"] #style-toggle a:hover {
   border-color: var(--metro-highlight);
 }
 
-/* Secondary blue tile */
+/* Secondary tile — dusty rose */
 .metro-tile--secondary {
   background: var(--metro-secondary);
   color: var(--metro-text-on-accent);
