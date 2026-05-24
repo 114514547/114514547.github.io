@@ -6,7 +6,7 @@ author_profile: false
 comments: false
 ---
 
-<div class="changelog">
+{% include base_path %}
 
 ## v0.5 — 2026.05.23
 **Metro 风格覆盖列表页**
@@ -53,5 +53,3 @@ comments: false
 - 引入现代毛玻璃（Glassmorphism）主题样式
 - 完成首页基本布局：关于我、最新文章、导航卡片
 - 配置 GitHub Pages 部署
-
-</div>

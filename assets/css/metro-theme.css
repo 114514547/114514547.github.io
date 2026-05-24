@@ -1,30 +1,33 @@
 /* ==========================================================================
    METRO THEME — Windows Metro / Fluent Dashboard
-   Color Palette: #02132E #3C6DA6 #9DBFE2 #B8DDF7 #BFE6FD
+   Color Palette: #FAB9AC #7BBC53 #DE6736 #67C1EC #E6B90D
+   Base: #2D2926
    Activated by: <html data-style="metro">
    Dark mode:    <html data-style="metro" data-theme="dark">
    ========================================================================== */
 
 /* --- Design Tokens --- */
 html[data-style="metro"] {
-  --metro-bg: #ffffff;
-  --metro-bg-secondary: #f0f4f8;
+  --metro-bg: #f5f5f5;
+  --metro-bg-secondary: #ececec;
   --metro-surface: #ffffff;
-  --metro-surface-alt: #B8DDF7;
-  --metro-border: #d8e2ec;
+  --metro-surface-alt: #FAB9AC;
+  --metro-border: #e0e0e0;
 
-  --metro-primary: #02132E;
-  --metro-primary-soft: #3C6DA6;
-  --metro-secondary: #3C6DA6;
-  --metro-accent: #9DBFE2;
-  --metro-highlight: #BFE6FD;
-  --metro-tile-light: #B8DDF7;
+  --metro-sidebar-bg: #2D2926;
 
-  --metro-text: #02132E;
-  --metro-text-secondary: #3C6DA6;
-  --metro-text-muted: #6b8aab;
+  --metro-primary: #FAB9AC;
+  --metro-primary-soft: #f5d0c6;
+  --metro-secondary: #67C1EC;
+  --metro-accent: #DE6736;
+  --metro-highlight: #c55a2a;
+  --metro-tile-light: #7BBC53;
+
+  --metro-text: #2D2926;
+  --metro-text-secondary: #DE6736;
+  --metro-text-muted: #537380;
   --metro-text-on-dark: #ffffff;
-  --metro-text-on-accent: #02132E;
+  --metro-text-on-accent: #2D2926;
 
   --metro-easing: cubic-bezier(0.22, 1, 0.36, 1);
   --metro-duration: 250ms;
@@ -36,24 +39,26 @@ html[data-style="metro"] {
 }
 
 html[data-style="metro"][data-theme="dark"] {
-  --metro-bg: #02132E;
-  --metro-bg-secondary: #0a1f3a;
-  --metro-surface: #112840;
-  --metro-surface-alt: #15304D;
-  --metro-border: #1a3859;
+  --metro-bg: #2D2926;
+  --metro-bg-secondary: #3a3532;
+  --metro-surface: #3f3a37;
+  --metro-surface-alt: #DE6736;
+  --metro-border: #4a4542;
 
-  --metro-primary: #BFE6FD;
-  --metro-primary-soft: #9DBFE2;
-  --metro-secondary: #9DBFE2;
-  --metro-accent: #3C6DA6;
-  --metro-highlight: #1a3859;
-  --metro-tile-light: #15304D;
+  --metro-sidebar-bg: #2D2926;
 
-  --metro-text: #BFE6FD;
-  --metro-text-secondary: #9DBFE2;
-  --metro-text-muted: #6b8aab;
-  --metro-text-on-dark: #BFE6FD;
-  --metro-text-on-accent: #02132E;
+  --metro-primary: #FAB9AC;
+  --metro-primary-soft: #f5d0c6;
+  --metro-secondary: #67C1EC;
+  --metro-accent: #DE6736;
+  --metro-highlight: #c55a2a;
+  --metro-tile-light: #7BBC53;
+
+  --metro-text: #FAB9AC;
+  --metro-text-secondary: #67C1EC;
+  --metro-text-muted: #67C1EC;
+  --metro-text-on-dark: #2D2926;
+  --metro-text-on-accent: #2D2926;
 }
 
 
@@ -119,7 +124,7 @@ html[data-style="metro"] body::before {
    ========================================================================== */
 
 html[data-style="metro"] .masthead {
-  background: var(--metro-primary);
+  background: var(--metro-sidebar-bg);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-bottom: none;
@@ -239,7 +244,7 @@ html[data-style="metro"] #style-toggle a:hover {
   left: 0;
   bottom: 0;
   width: var(--metro-sidebar-width);
-  background: var(--metro-primary);
+  background: var(--metro-sidebar-bg);
   z-index: 40;
   display: flex;
   flex-direction: column;
@@ -461,16 +466,17 @@ html[data-style="metro"] #style-toggle a:hover {
    TILE VARIANTS — Color-coded tiles
    ========================================================================== */
 
-/* Primary dark tile */
+/* Primary tile — coral */
 .metro-tile--primary {
   background: var(--metro-primary);
-  color: var(--metro-text-on-dark);
+  color: var(--metro-text-on-accent);
   border-color: var(--metro-primary);
 }
 
 .metro-tile--primary:hover {
-  background: var(--metro-secondary);
-  border-color: var(--metro-secondary);
+  background: var(--metro-accent);
+  color: var(--metro-text-on-accent);
+  border-color: var(--metro-accent);
 }
 
 /* Accent colored tile */
@@ -482,13 +488,14 @@ html[data-style="metro"] #style-toggle a:hover {
 
 .metro-tile--accent:hover {
   background: var(--metro-highlight);
+  color: var(--metro-text-on-accent);
   border-color: var(--metro-highlight);
 }
 
 /* Secondary blue tile */
 .metro-tile--secondary {
   background: var(--metro-secondary);
-  color: var(--metro-text-on-dark);
+  color: var(--metro-text-on-accent);
   border-color: var(--metro-secondary);
 }
 
@@ -614,17 +621,17 @@ html[data-style="metro"] #style-toggle a:hover {
 
 .metro-tile--primary .metro-post-item,
 .metro-tile--secondary .metro-post-item {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 .metro-tile--primary .metro-post-item__date,
 .metro-tile--secondary .metro-post-item__date {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .metro-tile--primary .metro-post-item__title,
 .metro-tile--secondary .metro-post-item__title {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.85);
 }
 
 
@@ -755,12 +762,12 @@ html[data-style="metro"] #style-toggle a:hover {
 }
 
 .metro-tile--primary .metro-user-tile__link {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--metro-text);
 }
 
 .metro-tile--primary .metro-user-tile__link:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.12);
 }
 
 .metro-tile:not(.metro-tile--primary):not(.metro-tile--secondary) .metro-user-tile__link {
@@ -803,13 +810,13 @@ html[data-style="metro"] #style-toggle a:hover {
 }
 
 .metro-tile--primary .metro-tag {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .metro-tile--primary .metro-tag:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: rgba(0, 0, 0, 0.12);
+  color: var(--metro-text);
 }
 
 
@@ -891,12 +898,12 @@ html[data-style="metro"] #style-toggle a:hover {
 
 .metro-tile--primary .metro-view-all,
 .metro-tile--secondary .metro-view-all {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .metro-tile--primary .metro-view-all:hover,
 .metro-tile--secondary .metro-view-all:hover {
-  color: #ffffff;
+  color: var(--metro-text);
 }
 
 

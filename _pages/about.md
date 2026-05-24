@@ -330,7 +330,51 @@ comments: false
       </a>
       {% endif %}
 
-      <!-- Row 4: Tags + Teaching timeline -->
+      <a href="/changelog/" class="metro-tile metro-tile--accent">
+        <div class="metro-nav-tile">
+          <i class="fas fa-clock-rotate-left metro-nav-tile__icon"></i>
+          <span class="metro-nav-tile__label">更新日志</span>
+          <span class="metro-nav-tile__desc">版本记录与变更</span>
+        </div>
+      </a>
+
+      <!-- Row 4: Changelog + Tags + Teaching timeline -->
+      <div class="metro-tile metro-tile--wide">
+        <div class="metro-tile__header">Changelog</div>
+        <ul class="metro-post-list">
+          <li>
+            <a href="/changelog/" class="metro-post-item">
+              <span class="metro-post-item__date">v0.5</span>
+              <span class="metro-post-item__title">Metro 风格覆盖列表页</span>
+            </a>
+          </li>
+          <li>
+            <a href="/changelog/" class="metro-post-item">
+              <span class="metro-post-item__date">v0.4</span>
+              <span class="metro-post-item__title">Metro 磁贴主题 &amp; 双主题切换</span>
+            </a>
+          </li>
+          <li>
+            <a href="/changelog/" class="metro-post-item">
+              <span class="metro-post-item__date">v0.3</span>
+              <span class="metro-post-item__title">教程系列上线</span>
+            </a>
+          </li>
+          <li>
+            <a href="/changelog/" class="metro-post-item">
+              <span class="metro-post-item__date">v0.2</span>
+              <span class="metro-post-item__title">毛玻璃导航栏 &amp; 深色模式修复</span>
+            </a>
+          </li>
+          <li>
+            <a href="/changelog/" class="metro-post-item">
+              <span class="metro-post-item__date">v0.1</span>
+              <span class="metro-post-item__title">项目初始化</span>
+            </a>
+          </li>
+        </ul>
+        <a href="/changelog/" class="metro-view-all">查看全部 →</a>
+      </div>
       <div class="metro-tile metro-tile--wide">
         <div class="metro-tile__header">Tags</div>
         <div class="metro-tags">
