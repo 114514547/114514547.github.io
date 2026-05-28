@@ -1174,6 +1174,84 @@ html[data-style="metro"] .archive__item-title .taxonomy__count {
   margin-left: 0.3rem;
 }
 
+/* Reset glass theme backdrop-filter on archive items */
+html[data-style="metro"] .archive__item {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* CV page — style markdown sections as metro blocks */
+html[data-style="metro"] .archive > h1:not(.page__title) {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--metro-text);
+  letter-spacing: -0.01em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--metro-secondary);
+}
+
+html[data-style="metro"] .archive > h2 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--metro-text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--metro-secondary);
+  display: inline-block;
+}
+
+html[data-style="metro"] .archive > ul {
+  background: var(--metro-surface);
+  border: 1px solid var(--metro-border);
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 0.6rem;
+  list-style: none;
+}
+
+html[data-style="metro"] .archive > ul > li {
+  font-size: 0.82rem;
+  color: var(--metro-text);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--metro-border);
+  line-height: 1.5;
+}
+
+html[data-style="metro"] .archive > ul > li:last-child {
+  border-bottom: none;
+}
+
+html[data-style="metro"] .archive > ul > li > ul {
+  margin-top: 0.3rem;
+  padding-left: 1.2rem;
+}
+
+html[data-style="metro"] .archive > ul > li > ul > li {
+  font-size: 0.78rem;
+  color: var(--metro-text-muted);
+  border-bottom: none;
+  padding: 0.15rem 0;
+}
+
+/* Ensure archive page content is visible */
+html[data-style="metro"] .archive p {
+  color: var(--metro-text);
+}
+
+html[data-style="metro"] .archive a {
+  color: var(--metro-secondary);
+}
+
+html[data-style="metro"] .archive hr {
+  border: none;
+  border-top: 2px solid var(--metro-secondary);
+  margin: 0.3rem 0 0.8rem;
+}
+
 
 /* ==========================================================================
    SINGLE ARTICLE PAGE — Metro Style
