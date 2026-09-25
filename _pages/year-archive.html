@@ -1,19 +1,22 @@
 ---
 layout: archive
 permalink: /year-archive/
-title: "Blog posts"
+title: "文章"
 author_profile: true
 redirect_from:
   - /wordpress/blog-posts/
 ---
 
 {% include base_path %}
-{% capture written_year %}'None'{% endcapture %}
-{% for post in site.posts %}
-  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-  {% if year != written_year %}
-    <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
-    {% capture written_year %}{{ year }}{% endcapture %}
-  {% endif %}
-  {% include archive-single.html %}
+<p class="collection-intro">技术笔记、实践复盘与学习记录。按发布时间，从新到旧。</p>
+{% assign years = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+{% for year in years %}
+<section class="collection-year" aria-label="{{ year.name }} 年文章">
+  <h2 class="collection-year-title">{{ year.name }} <span>{{ year.items.size }} 篇</span></h2>
+  <div class="collection-grid">
+  {% for post in year.items %}
+    {% include collection-card.html item=post kind="article" %}
+  {% endfor %}
+  </div>
+</section>
 {% endfor %}

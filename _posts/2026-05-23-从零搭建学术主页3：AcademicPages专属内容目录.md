@@ -3,8 +3,9 @@ title: "从零搭建学术主页(3)：Academic Pages 专属内容目录"
 description: "从零搭建学术主页（3）"
 date: 2026-05-23T06:32:00.000Z
 preview: ""
-tags: ["Academic pages", "GitHub Pages", "Jekyll"]
-categories: ["teaching"]
+tags: ["学术主页", "网站搭建", "静态网站", "GitHub Pages", "Jekyll"]
+categories: ["学习记录"]
+permalink: /teaching/从零搭建学术主页3-AcademicPages专属内容目录/
 ---
 
 前面讲了 Jekyll 的基础三件套。这一章讲 Academic Pages 区别于普通 Jekyll 博客的核心——四个学术内容集合（collection）。它们的工作方式和 `_posts/` 类似，但各有自己的字段和用途。

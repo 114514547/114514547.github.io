@@ -1,0 +1,35 @@
+filters:
+  and:
+    - file.ext == "md"
+    - file.inFolder("_drafts")
+formulas:
+  写作日期: if(date, date.toString().slice(0, 10), "")
+properties:
+  file.name:
+    displayName: 文件
+  note.title:
+    displayName: 标题
+  formula.写作日期:
+    displayName: 日期
+  note.description:
+    displayName: 摘要
+  note.tags:
+    displayName: 标签
+views:
+  - type: table
+    name: 草稿
+    order:
+      - file.name
+      - title
+      - formula.写作日期
+      - description
+      - tags
+    sort:
+      - property: file.name
+        direction: DESC
+    columnSize:
+      file.name: 240
+      note.title: 260
+      formula.写作日期: 110
+      note.description: 420
+      note.tags: 180

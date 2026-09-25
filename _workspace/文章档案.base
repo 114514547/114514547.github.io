@@ -1,0 +1,41 @@
+filters:
+  and:
+    - file.ext == "md"
+    - file.inFolder("_posts")
+formulas:
+  发布日期: if(date, date.toString().slice(0, 10), "")
+properties:
+  file.name:
+    displayName: 文件
+  note.title:
+    displayName: 标题
+  formula.发布日期:
+    displayName: 日期
+  note.description:
+    displayName: 摘要
+  note.categories:
+    displayName: 分类
+  note.tags:
+    displayName: 标签
+views:
+  - type: table
+    name: 已发布
+    order:
+      - title
+      - file.name
+      - formula.发布日期
+      - categories
+      - tags
+      - description
+    sort:
+      - property: formula.发布日期
+        direction: DESC
+      - property: file.name
+        direction: DESC
+    columnSize:
+      note.title: 300
+      formula.发布日期: 110
+      note.categories: 150
+      note.tags: 220
+      note.description: 420
+      file.name: 240

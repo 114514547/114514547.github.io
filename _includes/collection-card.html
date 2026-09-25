@@ -1,0 +1,13 @@
+{% assign item = include.item %}
+<article class="collection-card collection-card--{{ include.kind }}">
+  <div class="collection-card-meta">
+    <span>{% if include.kind == 'project' %}项目档案{% else %}{{ item.categories | first | default: '学习记录' }}{% endif %}</span>
+    {% if include.kind == 'article' %}<time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%Y.%m.%d' }}</time>{% endif %}
+  </div>
+  <h2><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></h2>
+  <p class="collection-card-summary">{{ item.description | default: item.excerpt | strip_html | normalize_whitespace | truncate: 150 }}</p>
+  <div class="collection-card-footer">
+    <span>{{ item.tags | first | default: '实践与记录' }}</span>
+    <a href="{{ item.url | relative_url }}" aria-label="{% if include.kind == 'project' %}查看项目{% else %}阅读{% endif %}：{{ item.title | escape }}">{% if include.kind == 'project' %}查看项目{% else %}阅读全文{% endif %} <span aria-hidden="true">↗</span></a>
+  </div>
+</article>

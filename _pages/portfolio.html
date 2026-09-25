@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Portfolio"
+title: "项目"
 permalink: /portfolio/
 author_profile: true
 ---
@@ -8,7 +8,10 @@ author_profile: true
 {% include base_path %}
 
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
+<p class="collection-intro">个人工具、实践作品与系统设计。</p>
+<div class="collection-grid collection-grid--projects">
+  {% for post in site.portfolio %}
+    {% include collection-card.html item=post kind="project" %}
+  {% endfor %}
+</div>
 

@@ -16,56 +16,18 @@ let determineComputedTheme = () => {
   if (themeSetting != "system") {
     return themeSetting;
   }
-  return (userPref && userPref("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 };
 
 // detect OS/browser preference
 const browserPref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-// --- Style (glass / metro) ---
-let determineStyleSetting = () => {
-  let s = localStorage.getItem("style");
-  return (s === "metro") ? "metro" : "glass";
-};
-
-let setStyle = (style) => {
-  const use_style = style || determineStyleSetting();
-  if (use_style === "metro") {
-    $("html").attr("data-style", "metro");
-    $("#style-icon").removeClass("fa-palette").addClass("fa-table-cells-large");
-  } else {
-    $("html").removeAttr("data-style");
-    $("#style-icon").removeClass("fa-table-cells-large").addClass("fa-palette");
-  }
-};
-
-var toggleStyle = () => {
-  const current = $("html").attr("data-style");
-  const next = current === "metro" ? "glass" : "metro";
-
-  const overlay = document.createElement('div');
-  overlay.className = 'md-theme-transition';
-  document.body.appendChild(overlay);
-  requestAnimationFrame(() => {
-    overlay.classList.add('active');
-    setTimeout(() => {
-      localStorage.setItem("style", next);
-      setStyle(next);
-      setTimeout(() => {
-        overlay.classList.remove('active');
-        setTimeout(() => overlay.remove(), 300);
-      }, 100);
-    }, 250);
-  });
-};
 
 // --- Theme (light / dark) ---
 let setTheme = (theme) => {
   const use_theme =
     theme ||
-    localStorage.getItem("theme") ||
-    $("html").attr("data-theme") ||
-    browserPref;
+    determineComputedTheme();
 
   if (use_theme === "dark") {
     $("html").attr("data-theme", "dark");
@@ -74,6 +36,7 @@ let setTheme = (theme) => {
     $("html").removeAttr("data-theme");
     $("#theme-icon").removeClass("fa-moon").addClass("fa-sun");
   }
+  $('#theme-toggle a').attr('aria-label', use_theme === 'dark' ? '切换浅色模式' : '切换深色模式');
 };
 
 var toggleTheme = () => {
@@ -128,17 +91,21 @@ $(document).ready(function () {
 
   // If the user hasn't chosen a theme, follow the OS preference
   setTheme();
-  setStyle();
   window.matchMedia('(prefers-color-scheme: dark)')
         .addEventListener("change", (e) => {
-          if (!localStorage.getItem("theme")) {
+          if (determineThemeSetting() === 'system') {
             setTheme(e.matches ? "dark" : "light");
           }
         });
 
   // Enable the theme and style toggles
   $('#theme-toggle').on('click', toggleTheme);
-  $('#style-toggle').on('click', toggleStyle);
+  $('#theme-toggle a').on('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleTheme();
+    }
+  });
 
   // Enable the sticky footer
   var bumpIt = function () {

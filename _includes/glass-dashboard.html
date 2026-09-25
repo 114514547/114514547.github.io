@@ -1,0 +1,82 @@
+<div class="glass-home studio-home">
+  <aside class="studio-sidebar">
+    <a class="studio-brand" href="{{ '/' | relative_url }}"><i class="fas fa-globe" aria-hidden="true"></i> {{ site.author.name }}</a>
+    <p>记录热爱 · 分享探索</p>
+    <nav aria-label="主页导航">
+      <a href="{{ '/' | relative_url }}" aria-current="page"><i class="fas fa-home" aria-hidden="true"></i> 首页</a>
+      <a href="{{ '/year-archive/' | relative_url }}"><i class="fas fa-book-open" aria-hidden="true"></i> 文章</a>
+      <a href="{{ '/portfolio/' | relative_url }}"><i class="fas fa-code" aria-hidden="true"></i> 项目</a>
+      <a href="{{ '/tags/' | relative_url }}"><i class="fas fa-tags" aria-hidden="true"></i> 标签</a>
+      <a href="{{ '/changelog/' | relative_url }}"><i class="fas fa-history" aria-hidden="true"></i> 更新日志</a>
+      {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>{% endif %}
+    </nav>
+    <div class="studio-sidebar-note">学习，实践，记录。<br>让想法慢慢成为作品。</div>
+  </aside>
+  <header class="studio-welcome">
+    <p class="studio-kicker">PERSONAL SPACE / {{ site.author.name | upcase }}</p>
+    <h1>你好，欢迎来到我的主页<span aria-hidden="true"> ✦</span></h1>
+    <p>这里记录技术探索、学习成长，以及从想法到作品的过程。</p>
+  </header>
+  <div class="studio-overview">
+    <section class="studio-panel studio-profile" aria-label="个人介绍">
+      {% if site.author.avatar contains '://' %}{% assign studio_avatar = site.author.avatar %}{% else %}{% assign studio_avatar = site.author.avatar | prepend: '/images/' | relative_url %}{% endif %}
+      <img class="studio-avatar" src="{{ studio_avatar }}" alt="{{ site.author.name | escape }}">
+      <div class="studio-profile-body">
+        <h2>{{ site.author.name }} <span>欢迎来访</span></h2>
+        <p>{{ site.author.location }} · {{ site.author.employer }}</p>
+        <div class="studio-stats">
+          <a href="{{ '/year-archive/' | relative_url }}"><strong>{{ site.posts.size }}</strong>篇文章</a>
+          <a href="{{ '/portfolio/' | relative_url }}"><strong>{{ site.portfolio.size }}</strong>个项目</a>
+          <a href="{{ '/tags/' | relative_url }}"><strong>{{ site.tags.size }}</strong>个主题</a>
+        </div>
+      </div>
+    </section>
+    <section class="studio-panel studio-clock" aria-label="日期与时间">
+      <div class="studio-clock-calendar"><i class="far fa-calendar-alt" aria-hidden="true"></i><div><p id="studio-date">日期加载中</p><small id="studio-weekday"></small></div></div>
+      <time id="studio-time" class="studio-clock-time">--:--</time>
+      <small class="studio-clock-caption">此刻 · 设备本地时间</small>
+      <noscript>启用 JavaScript 后显示实时时间。</noscript>
+    </section>
+    <section class="studio-panel studio-note" aria-label="个人寄语">
+      <span class="studio-quote-mark" aria-hidden="true">“</span>
+      <p>{{ site.author.bio }}</p>
+      <small>记录所学，也保留生活的余地。</small>
+    </section>
+  </div>
+  <div class="studio-content">
+    <section class="studio-panel studio-articles">
+      <div class="studio-heading"><h2><i class="fas fa-feather-pointed" aria-hidden="true"></i> 最近文章</h2><a href="{{ '/year-archive/' | relative_url }}">全部文章 ↗</a></div>
+      {% for post in site.posts limit:4 %}
+      <a class="studio-entry" href="{{ post.url | relative_url }}">
+        <span class="studio-entry-icon" aria-hidden="true"><i class="fas fa-file-lines"></i></span>
+        <span><h3>{{ post.title | escape }}</h3><small>{{ post.categories | first | default: '学习记录' }} · {{ post.date | date: '%Y.%m.%d' }}</small></span>
+        <span class="studio-arrow" aria-hidden="true">↗</span>
+      </a>
+      {% endfor %}
+    </section>
+    <section class="studio-panel studio-projects">
+      <div class="studio-heading"><h2><i class="fas fa-cube" aria-hidden="true"></i> 项目展示</h2><a href="{{ '/portfolio/' | relative_url }}">全部项目 ↗</a></div>
+      {% for project in site.portfolio limit:3 %}
+      <a class="studio-entry" href="{{ project.url | relative_url }}">
+        <span class="studio-entry-icon" aria-hidden="true"><i class="fas fa-code"></i></span>
+        <span><h3>{{ project.title | escape }}</h3><small>{{ project.description | default: project.excerpt | strip_html | normalize_whitespace | truncate: 58 }}</small></span>
+        <span class="studio-arrow" aria-hidden="true">↗</span>
+      </a>
+      {% endfor %}
+    </section>
+    <div class="studio-extras">
+      <section class="studio-panel">
+        <div class="studio-heading"><h2><i class="fas fa-tags" aria-hidden="true"></i> 内容标签</h2></div>
+        <div class="studio-tags">{% for tag in site.tags limit:10 %}<a href="{{ '/tags/' | relative_url }}#{{ tag[0] | slugify }}">{{ tag[0] }}</a>{% endfor %}</div>
+      </section>
+      <section class="studio-panel">
+        <div class="studio-heading"><h2><i class="far fa-paper-plane" aria-hidden="true"></i> 联系方式</h2></div>
+        <div class="studio-contact">
+          {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}"><i class="fab fa-github" aria-hidden="true"></i> GitHub ↗</a>{% endif %}
+          {% if site.author.email %}<a href="mailto:{{ site.author.email }}"><i class="far fa-envelope" aria-hidden="true"></i> 邮箱 ↗</a>{% endif %}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script src="{{ '/assets/js/studio-clock.js' | relative_url }}" defer></script>

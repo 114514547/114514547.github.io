@@ -6,7 +6,8 @@
   };
 
   function getStyle() {
-    return localStorage.getItem("style") === "metro" ? "metro" : "glass";
+    try { return localStorage.getItem("style") === "metro" ? "metro" : "glass"; }
+    catch (_) { return document.documentElement.getAttribute('data-style') === 'metro' ? 'metro' : 'glass'; }
   }
 
   function setStyle(style) {
@@ -19,6 +20,8 @@
     if (icon) {
       icon.className = "fa-solid " + (icons[style] || icons.glass);
     }
+    var control = document.querySelector('#style-toggle a');
+    if (control) control.setAttribute('aria-label', style === 'metro' ? '切换毛玻璃风格' : '切换磁贴风格');
   }
 
   // Apply saved style immediately (before render)
@@ -31,23 +34,18 @@
 
     setStyle(getStyle());
 
-    btn.addEventListener("click", function () {
+    function toggle() {
       var next = getStyle() === "metro" ? "glass" : "metro";
-
-      var overlay = document.createElement("div");
-      overlay.className = "md-theme-transition";
-      document.body.appendChild(overlay);
-      requestAnimationFrame(function () {
-        overlay.classList.add("active");
-        setTimeout(function () {
-          localStorage.setItem("style", next);
-          setStyle(next);
-          setTimeout(function () {
-            overlay.classList.remove("active");
-            setTimeout(function () { overlay.remove(); }, 300);
-          }, 100);
-        }, 250);
-      });
+      try { localStorage.setItem('style', next); } catch (_) {}
+      setStyle(next);
+      window.dispatchEvent(new Event('resize'));
+    }
+    btn.addEventListener('click', toggle);
+    btn.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggle();
+      }
     });
   });
 })();

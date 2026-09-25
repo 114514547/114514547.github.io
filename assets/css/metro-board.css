@@ -1,0 +1,79 @@
+/* A desktop Metro start screen; reading pages keep normal document scrolling. */
+.metro-board-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.metro-board-controls { display: none; }
+
+@media (min-width: 900px) and (min-height: 640px) {
+  html[data-style="metro"]:has(.metro-dashboard) #main {
+    transform: none;
+    animation: none;
+    will-change: auto;
+    max-width: none;
+  }
+  html[data-style="metro"]:has(.metro-dashboard) body {
+    overflow: hidden;
+    margin-bottom: 0 !important;
+  }
+  html[data-style="metro"]:has(.metro-dashboard) .page__footer { display: none; }
+  html[data-style="metro"] .metro-dashboard {
+    position: fixed;
+    inset: var(--metro-topbar-height) 0 0 var(--metro-sidebar-width);
+    min-height: 0;
+    padding: 0;
+  }
+  html[data-style="metro"] .metro-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: none;
+    padding: clamp(18px, 2.2vw, 36px);
+    box-sizing: border-box;
+  }
+  .metro-board-heading { flex: 0 0 auto; padding-bottom: 16px; }
+  .metro-board-heading .metro-page-subtitle { margin: 10px 0 0; }
+  html[data-style="metro"] .metro-board-controls { display: flex; align-items: center; gap: 10px; }
+  .metro-board-controls span { font-size: 12px; color: var(--metro-text-muted); }
+  .metro-board-controls button {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: var(--metro-surface);
+    color: var(--metro-text);
+    border: 1px solid var(--metro-border);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .metro-board-controls button:disabled { opacity: 0.35; cursor: default; }
+  html[data-style="metro"] .metro-board {
+    flex: 1;
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-color: var(--metro-secondary) var(--metro-bg-secondary);
+    scrollbar-width: auto;
+  }
+  html[data-style="metro"] .metro-grid {
+    height: 100%;
+    width: max-content;
+    box-sizing: border-box;
+    padding: 4px 4px 18px;
+    grid-template-columns: none;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(190px, 17vw, 260px);
+    gap: 14px;
+  }
+  html[data-style="metro"] .metro-grid > .metro-tile {
+    min-height: 0;
+    overflow-y: auto;
+    cursor: default;
+  }
+  html[data-style="metro"] .metro-grid > a.metro-tile { cursor: pointer; }
+  html[data-style="metro"] .metro-grid > .metro-tile--wide,
+  html[data-style="metro"] .metro-grid > .metro-tile--full {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  html[data-style="metro"] .metro-stat { min-height: 0; }
+  html[data-style="metro"] .metro-post-item__title { white-space: normal; }
+}
