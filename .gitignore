@@ -19,5 +19,13 @@ package-lock.json
 # Ignore folders related to IDEs
 .vscode/
 
+# Keep this repository usable as a local Obsidian vault without publishing
+# machine-specific plugin state or workspace layout.
+.obsidian/
+.trash/
+
+# Drafts stay local. Moving a finished file into _posts makes it publishable.
+_drafts/
+
 # Ignore files created by MacOS
 .DS_Store
