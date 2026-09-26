@@ -9,7 +9,7 @@
   function initScrollReveal() {
     var revealSelectors = [
       ".archive__item",
-      ".home-section .glass-card",
+
       ".page__content > h2",
       ".page__content > h3",
       ".page__content > p",
@@ -51,12 +51,6 @@
         rootMargin: "0px 0px -40px 0px",
       }
     );
-
-    // Add staggered delays to home-section cards
-    var homeCards = document.querySelectorAll(".home-section .glass-card");
-    homeCards.forEach(function (card, i) {
-      card.dataset.revealDelay = i * 100;
-    });
 
     elements.forEach(function (el) {
       observer.observe(el);
@@ -118,36 +112,6 @@
     );
   }
 
-  // --- Smooth parallax for orbs ---
-  function initOrbParallax() {
-    var orbs = document.querySelectorAll(".orb");
-    if (!orbs.length) return;
-
-    var ticking = false;
-    window.addEventListener(
-      "mousemove",
-      function (e) {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(function () {
-          var x = (e.clientX / window.innerWidth - 0.5) * 2;
-          var y = (e.clientY / window.innerHeight - 0.5) * 2;
-          orbs.forEach(function (orb, i) {
-            var factor = (i + 1) * 8;
-            orb.style.transform =
-              "translate(" +
-              x * factor +
-              "px, " +
-              y * factor +
-              "px)";
-          });
-          ticking = false;
-        });
-      },
-      { passive: true }
-    );
-  }
-
   // --- Initialize ---
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
@@ -159,6 +123,6 @@
     initScrollReveal();
     initStaggerReveal();
     initNavbarShrink();
-    initOrbParallax();
+
   }
 })();

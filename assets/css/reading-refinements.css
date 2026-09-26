@@ -91,3 +91,34 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
   }
   .reveal, .reveal-scale, .reveal-stagger { opacity: 1 !important; transform: none !important; }
 }
+/* A dark navigation surface has its own foreground, independent of page theme. */
+html[data-style="metro"] .page__content .metro-sidebar a,
+html[data-style="metro"] .metro-sidebar .metro-nav-item {
+  color: #e3edf3; opacity: 1;
+}
+html[data-style="metro"] .metro-sidebar .metro-nav-item i { color: #bad8e7; opacity: 1; }
+html[data-style="metro"] .metro-sidebar .metro-nav-item.active {
+  background: #304d5d; color: #ffffff; border-left-color: #a8d8e5;
+}
+html[data-style="metro"] .metro-sidebar .metro-nav-item:hover { background: #294553; color: #ffffff; }
+html[data-style="metro"] .metro-sidebar__brand span,
+html[data-style="metro"] .metro-sidebar__user-role { color: #b8cbd6; opacity: 1; }
+html[data-style="metro"] .metro-sidebar__brand h1,
+html[data-style="metro"] .metro-sidebar__user-name { color: #f0f5f8; }
+/* Do not reserve an invisible author column on reading pages. */
+html body #main:has(> article.page) {
+  max-width: 940px; width: 100%; margin: 32px auto !important;
+  padding: 0 24px !important; display: block;
+}
+html body #main:has(> article.page) > .sidebar { display: none; }
+html body #main > article.page {
+  float: none; width: 100%; max-width: none; margin: 0; padding: 30px;
+}
+html[data-style="metro"] body #main > article.page { max-width: none; padding: 0 !important; }
+html body #main > article.page .page__content { float: none; width: 100%; }
+html body #main > article.page .page__inner-wrap { float: none; width: 100%; }
+html body #main:has(> article.page) .page__related { float: none; width: 100%; padding: 0; }
+@media (max-width: 600px) {
+  html body #main:has(> article.page) { padding: 0 12px !important; margin-block: 20px !important; }
+  html body #main > article.page { padding: 18px; }
+}

@@ -47,7 +47,15 @@
       };
     }
 
+    var frame = null;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function enabled() {
+      return !document.hidden && !reduceMotion.matches &&
+        document.documentElement.getAttribute('data-style') !== 'metro';
+    }
     function draw() {
+      frame = null;
+      if (!enabled()) return;
       ctx.clearRect(0, 0, w, h);
 
       for (var i = 0; i < drops.length; i++) {
@@ -74,10 +82,21 @@
         }
       }
 
-      requestAnimationFrame(draw);
+      frame = requestAnimationFrame(draw);
     }
 
-    draw();
+    function sync() {
+      if (frame !== null) cancelAnimationFrame(frame);
+      frame = null;
+      canvas.hidden = !enabled();
+      if (enabled()) draw();
+    }
+    document.addEventListener('visibilitychange', sync);
+    reduceMotion.addEventListener('change', sync);
+    new MutationObserver(sync).observe(document.documentElement, {
+      attributes: true, attributeFilter: ['data-style']
+    });
+    sync();
   }
 
   if (document.readyState === "loading") {

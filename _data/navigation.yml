@@ -14,10 +14,3 @@ main:
 
   - title: "更新日志"
     url: /changelog/
-
-  # 取消注释来添加更多链接
-  # - title: "归档"
-  #   url: /archive-layout-with-content/
-
-  # - title: "CV"
-  #   url: /cv/

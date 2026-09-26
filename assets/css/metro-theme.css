@@ -1316,20 +1316,6 @@ html[data-style="metro"] blockquote {
   color: var(--metro-text);
 }
 
-/* Code */
-html[data-style="metro"] .page__content code {
-  background: var(--metro-bg-secondary);
-  padding: 0.1em 0.3em;
-  font-size: 0.88em;
-}
-
-html[data-style="metro"] .highlight,
-html[data-style="metro"] pre {
-  background: var(--metro-bg-secondary) !important;
-  border: 1px solid var(--metro-border) !important;
-}
-
-
 /* ==========================================================================
    RESPONSIVE — Archive Grid
    ========================================================================== */

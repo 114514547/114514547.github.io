@@ -34,7 +34,8 @@
     <section class="studio-panel studio-clock" aria-label="日期与时间">
       <div class="studio-clock-calendar"><i class="far fa-calendar-alt" aria-hidden="true"></i><div><p id="studio-date">日期加载中</p><small id="studio-weekday"></small></div></div>
       <time id="studio-time" class="studio-clock-time">--:--</time>
-      <small class="studio-clock-caption">此刻 · 设备本地时间</small>
+      <small class="studio-clock-caption">北京时间 · 郑州</small>
+      {% include local-weather.html %}
       <noscript>启用 JavaScript 后显示实时时间。</noscript>
     </section>
     <section class="studio-panel studio-note" aria-label="个人寄语">

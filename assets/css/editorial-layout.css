@@ -21,40 +21,6 @@ html:not([data-style="metro"]) .masthead__menu-item--lg a {
   background: transparent;
   color: var(--text-primary);
 }
-html[data-style="metro"] .glass-home { display: none; }
-html:not([data-style="metro"]) #main:has(.glass-home) {
-  max-width: 1280px;
-  padding: 0 28px;
-  margin-inline: auto;
-}
-.glass-home {
-  display: grid;
-  grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.3fr);
-  gap: 24px;
-  padding: 48px 0;
-  align-items: start;
-}
-.glass-home .hero-section { min-height: 0; padding: 0; display: block; }
-.glass-home .hero-bg-orbs { display: none; }
-.glass-home .home-section { width: 100%; max-width: none; margin: 0; padding: 0; }
-.glass-home .glass-card { border-radius: 18px; padding: 32px; }
-.glass-home .hero-card { max-width: none; text-align: left; opacity: 1; transform: none; animation: none; }
-.glass-home .hero-avatar { margin: 0 0 28px; width: 76px; height: 76px; }
-.glass-home .hero-name { font-size: clamp(40px, 4vw, 60px); margin: 8px 0 16px; letter-spacing: -0.045em; }
-.hero-eyebrow { font-size: 12px; letter-spacing: 0.12em; color: var(--text-secondary); margin: 0; }
-.glass-home .hero-tagline { font-size: 15px; line-height: 1.8; margin-bottom: 24px; }
-.hero-introduction { color: var(--text-secondary); font-size: 15px; line-height: 1.9; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 18px; margin: 28px 0; font-size: 14px; font-weight: 600; }
-.glass-home .hero-meta, .glass-home .hero-social { justify-content: flex-start; }
-.glass-home .meta-chip { background: transparent; border: 0; padding: 0; font-size: 12px; }
-.glass-home .hero-social { margin-top: 20px; }
-.glass-home .section-title { margin-top: 0; font-size: 20px; }
-.glass-home .post-item { padding: 18px 0; border-radius: 0; }
-.glass-home .post-item-title { font-size: 16px; line-height: 1.6; white-space: normal; }
-.glass-home .post-item-excerpt { font-size: 13px; line-height: 1.7; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-.glass-home-links { grid-column: 1 / -1; }
-.glass-home-links .quick-links-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
 /* A chronological row-major grid, independent of legacy archive card styles. */
 #main:has(.collection-grid) { max-width: 1180px; margin: 32px auto !important; padding: 0 28px !important; }
 html[data-style="metro"] #main:has(.collection-grid) { max-width: 1180px; margin: 32px auto !important; padding: 0 28px !important; }
@@ -101,10 +67,8 @@ html[data-style="metro"] .collection-card-footer a { color: var(--metro-secondar
 html[data-style="metro"] .collection-card-footer > span,
 html[data-style="metro"] .collection-year-title span { color: var(--metro-text-muted); }
 @media (max-width: 800px) {
-  .glass-home { grid-template-columns: 1fr; padding-top: 24px; }
-  .glass-home-links .quick-links-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .collection-grid { grid-template-columns: 1fr; }
-  .glass-home .glass-card, .collection-card { padding: 24px; }
-  html:not([data-style="metro"]) #main:has(.glass-home), #main:has(.collection-grid) { padding-inline: 16px !important; }
+  .collection-card { padding: 24px; }
+  #main:has(.collection-grid) { padding-inline: 16px !important; }
   html[data-style="metro"] #main:has(.collection-grid) { padding-inline: 16px !important; }
 }
