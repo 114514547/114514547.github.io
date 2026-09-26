@@ -107,6 +107,59 @@ html:not([data-style="metro"]) body:has(.studio-home) .page__footer { position: 
   html:not([data-style="metro"]) body:has(.studio-home) .page__footer { margin-left: 0; }
 }
 /* Floating controls need their own surface over photographic backgrounds. */
+/* Desktop home is a viewport-sized dashboard, not a tall document.
+   Small screens and large browser zoom retain accessible document flow. */
+@media (min-width: 1100px) and (min-height: 700px) {
+  html:not([data-style="metro"]) .glass-home.studio-home {
+    position: fixed; inset: 58px 24px 32px 230px;
+    max-width: none; margin: 0; display: grid;
+    grid-template-rows: 76px 220px minmax(0, 1fr); gap: 12px;
+  }
+  html:not([data-style="metro"]) body:has(.studio-home) { height: 100dvh; min-height: 0; overflow: hidden; }
+  html:not([data-style="metro"]) #main:has(.studio-home) { padding: 0 !important; min-height: 0; }
+  .studio-welcome { padding: 0 8px; }
+  .studio-welcome .studio-kicker { margin: 0 0 3px; font-size: 10px; }
+  .studio-welcome h1 { font-size: clamp(25px, 2.3vw, 36px); line-height: 1.25; margin: 0 0 4px; }
+  .studio-welcome > p { font-size: 12px; margin: 0; }
+  .studio-overview { grid-template-columns: minmax(0, 1.4fr) minmax(220px, 1fr) minmax(0, 1fr); margin: 0; gap: 12px; min-height: 0; }
+  .studio-note { display: block; }
+  .studio-panel { padding: 14px; }
+  .studio-profile { gap: 14px; }
+  .studio-avatar { width: 64px; height: 64px; }
+  .studio-profile h2 { font-size: 24px; margin-bottom: 8px; }
+  .studio-profile h2 span { padding: 3px 8px; margin-left: 4px; }
+  .studio-profile p { font-size: 12px; margin-bottom: 10px; }
+  .studio-stats { gap: 22px; padding-top: 8px; }
+  .studio-stats strong { font-size: 20px; }
+  .studio-clock-calendar { gap: 10px; }
+  .studio-clock-calendar p { font-size: 12px; }
+  .studio-clock-calendar small, .studio-clock-caption { font-size: 10px; }
+  .studio-clock-time { font-size: 34px; margin: 5px 0; }
+  .studio-clock .local-weather { margin-top: 6px; padding-top: 6px; font-size: 12px; }
+  .studio-clock .local-weather > small { font-size: 10px; margin-top: 2px; }
+  .studio-note p { font-size: 15px; line-height: 1.65; }
+  .studio-content { grid-template-columns: 1.2fr 1.1fr .9fr; gap: 12px; min-height: 0; }
+  .studio-extras { grid-column: auto; grid-template-columns: 1fr; grid-template-rows: 1fr auto; gap: 12px; min-height: 0; }
+  .studio-heading { gap: 6px; padding-bottom: 8px; }
+  .studio-heading h2 { font-size: 14px; }
+  .studio-heading > a { font-size: 10px; }
+  .studio-entry { padding: 8px 0; gap: 8px; }
+  .studio-entry h3 { font-size: 12px; line-height: 1.45; margin-bottom: 3px; }
+  .studio-entry small { font-size: 10px; line-height: 1.4; }
+  .studio-entry-icon { width: 28px; height: 34px; }
+  .studio-tags, .studio-contact { padding-top: 10px; gap: 6px; }
+  .studio-tags a { font-size: 10px; padding: 3px 7px; }
+  .studio-contact a { font-size: 11px; padding: 7px 8px; }
+  html:not([data-style="metro"]) body:has(.studio-home) .page__footer { position: fixed; bottom: 0; left: 230px; right: 24px; margin: 0; padding: 0; font-size: 10px; }
+  html:not([data-style="metro"]) body:has(.studio-home) .page__footer footer { padding: 4px 0; margin: 0; }
+}
+@media (min-width: 1100px) and (min-height: 900px) {
+  html:not([data-style="metro"]) .glass-home.studio-home { grid-template-rows: 100px 220px minmax(0, 1fr); gap: 16px; }
+  .studio-panel { padding: 18px; }
+  .studio-entry { padding: 12px 0; }
+  .studio-entry h3 { font-size: 13px; }
+  .studio-clock-time { font-size: 42px; }
+}
 html:not([data-style="metro"]) body:has(.studio-home) #style-toggle a,
 html:not([data-style="metro"]) body:has(.studio-home) #theme-toggle a {
   background: #f1eff8; color: #342852; border: 1px solid #b6afc9;
