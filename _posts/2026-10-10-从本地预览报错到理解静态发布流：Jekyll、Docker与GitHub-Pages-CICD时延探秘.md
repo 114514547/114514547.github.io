@@ -53,7 +53,7 @@ docker --version
 但如果你对着 AcademicPages 项目里的 `index.html` 或者某篇 `_posts` 里的 Markdown 文件点 Live Server，你会看到极度诡异的惨剧：
 * 网页排版全部碎裂，没有样式；
 * 页面顶部赫然展示着 YAML 的元数据（`title: ... tags: ...`）；
-* 屏幕上充斥着类似 `{% for post in site.posts %}`、`{{ site.title }}` 的奇怪花括号文本。
+* 屏幕上充斥着类似 {% raw %}`{% for post in site.posts %}`、`{{ site.title }}`{% endraw %} 的奇怪花括号文本。
 
 ### 核心差异：静态文件服务器 vs 模板编译器
 
